@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.guest input::placeholder {
+    font-size: .8rem;
+}
