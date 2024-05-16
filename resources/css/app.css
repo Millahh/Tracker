@@ -3,19 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-aside{
-    font-family: "Inria Sans", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-}
-
 .guest input::placeholder {
     font-size: .8rem;
 }
 .nav-container{
     margin: 0 2.5rem;
-    padding-top: 0.75rem;
-    border-top: 0.1rem solid rgba(255, 255, 255, 0.4);
+    /* padding-top: 0.75rem;
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.4); */
 }
 .nav-sidebar{
     padding: 0.75rem;
@@ -26,4 +20,7 @@ aside{
     color: #77AFB7;
     border-radius: 5px;
     box-shadow: 100px;
+}
+.dashboard{
+    font-family: "Inria Sans", sans-serif;
 }

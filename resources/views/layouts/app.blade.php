@@ -15,7 +15,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="antialiased">
+    <body class="antialiased overflow-y-hidden">
         <div class="min-h-screen bg-custom bg-cover">
             @include('layouts.sidebar')
 
@@ -29,7 +29,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="sm:ml-64">
                 {{ $slot }}
             </main>
         </div>

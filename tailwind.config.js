@@ -13,6 +13,7 @@ export default {
         extend: {
             backgroundImage: {
                 'custom': "url('/public/bg.png')",
+                'card': "url('/public/card.png')",
               },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
