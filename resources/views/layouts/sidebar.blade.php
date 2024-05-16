@@ -2,7 +2,7 @@
     <div class=" w-1/2 mx-auto my-7">
         <x-application-logo/>
     </div>
-    <div class="mx-10 pt-3 border-t-2">
+    <div class="nav-container">
         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-sidebar">
             {{ __('Dashboard') }}
         </x-nav-link>
