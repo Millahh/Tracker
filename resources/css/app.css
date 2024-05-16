@@ -5,11 +5,3 @@
 .guest input::placeholder {
     font-size: .8rem;
 }
-.nav-sidebar{
-    padding: 0.75rem;
-    display: block;
-}
-.nav-sidebar:hover, .nav-sidebar:active, .nav-sidebar:focus{
-    background-color: #FDFDFD;
-    color: #77AFB7;
-}
