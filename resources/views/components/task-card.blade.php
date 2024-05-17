@@ -14,9 +14,10 @@
             <li>re-check</li>
             <li>meeting on sunday</li>
         </div>
-        <button class="bg-[#B9D6DA] w-full text-xs py-3 rounded-lg mt-2">
-            Resources and/or attatchment
-        </button>
+        <x-submit-button/>
+        {{-- <x-uploaded-button/>
+        <x-download-button/>
+        <x-edit-delete-buttons/> --}}
     </div>
     <div class="text-sm text-right text-[#B5B5B5]">20 Juni - 30 Juni 2024</div>
 </div>
