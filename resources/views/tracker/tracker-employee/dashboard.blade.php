@@ -1,5 +1,5 @@
 <x-app-layout class="">
-    <div class="dashboard grid grid-rows-3 grid-cols-2 grid-flow-col gap-4 min-h-screen py-5 px-10">
+    <div class="dashboard grid grid-rows-4  grid-flow-col gap-4 min-h-screen py-5 px-10">
         <div class="bg-card bg-cover rounded-xl px-7 py-6">
             <p class="text-[#496569] text-xl font-bold"> 👋 Hi, Munirotul Millah! </p>
             <hr class="my-1">
@@ -14,7 +14,7 @@
                     <p class="bg-[#FFDADA] rounded-2xl text-center text-red-400 text-sm self-center p-1">Due 31 May</p>
                 </div>
                 <hr class="my-2">
-                <div class="tasks text-[#3E5457] px-4">
+                <div class="text-[#3E5457] px-4">
                     <li>30 new employees</li>
                     <li>re-check</li>
                     <li>meeting on sunday</li>
@@ -26,21 +26,10 @@
         </div>
         <div class="row-span-3 border-2 rounded-xl p-5">
             <p class="text-[#3E5457] text-xl font-bold pb-3">📌 My Tasks</p>
-            <x-task-card/>
+            <x-task-preview/>
             <hr class="my-4">
-            <x-task-card/>
+            <x-task-preview/>
             <a class="underline block text-right pt-2 hover:cursor-pointer hover:text-sky-600"> see more...</a>
         </div>
     </div>
-    {{-- <div class="p-5 min-h-screen">
-        <div class="tasks flex min-w-screen pb-5">
-            <x-my-tasks/>
-            <x-my-tasks/>
-            <x-my-tasks/>
-            <x-my-tasks/>
-            <x-my-tasks/>
-            <x-my-tasks/>
-        </div>
-    </div> --}}
-
 </x-app-layout>

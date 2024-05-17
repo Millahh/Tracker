@@ -1,6 +1,22 @@
-<div class="bg-[#F4F9FA] p-4 rounded-xl">
-    <p class="col-span-2 font-bold text-lg pl-2">Input employees' data</p>
-    <hr class="my-2">
-    <p class="text-[#3E5457] px-2 mb-2">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
-    <p class="bg-[#D7E2E3] inline rounded-2xl text-center text-gray-500 text-sm self-center py-1 px-5">3 Sub-tasks</p>
+<div class="card p-5 mx-5 border rounded-lg shadow-md">
+    <p class="font-semibold text-xs text-gray-700 text-center">59%</p>
+    <div class="progress-bar w-full bg-gray-200 rounded-full h-4 mb-4 dark:bg-gray-300">
+        <div class="bg-[#889BFF] h-4 rounded-full " style="width: 59%"></div>
+    </div>
+    <div class="text-[#3E5457] rounded-lg border-[#B9D6DA] border-2 p-3">
+        <p class="font-bold text-lg">INI JUDUL</p>
+        <p class="text-sm">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+        <div class="checklists px-4">
+            <li>30 new employees</li>
+            <li>re-check</li>
+            <li>meeting on sunday</li>
+            <li>30 new employees</li>
+            <li>re-check</li>
+            <li>meeting on sunday</li>
+        </div>
+        <button class="bg-[#B9D6DA] w-full text-xs py-3 rounded-lg mt-2">
+            Resources and/or attatchment
+        </button>
+    </div>
+    <div class="text-sm text-right text-[#B5B5B5]">20 Juni - 30 Juni 2024</div>
 </div>

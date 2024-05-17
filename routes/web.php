@@ -8,8 +8,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('dashboard');
+    return view('/tracker/tracker-employee/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/my-tasks', function () {
+    return view('/tracker/tracker-employee/my-tasks');
+})->middleware(['auth', 'verified'])->name('employee.my-tasks');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

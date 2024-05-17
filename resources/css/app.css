@@ -24,3 +24,29 @@
 .dashboard{
     font-family: "Inria Sans", sans-serif;
 }
+.tasks{
+    overflow-x: auto;
+    /* white-space: nowrap; */
+    min-height: 95vh;
+}
+.tasks .card{
+    max-width: 10rem;
+    min-width: 20rem;
+    background-color: #FEFEFE;
+    height: fit-content;
+}
+div::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+  }
+  
+div::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+    height: 10px;
+}
+
+div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #77afb7a4;
+}

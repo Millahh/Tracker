@@ -7,7 +7,7 @@
         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-sidebar">
             {{ __('Dashboard') }}
         </x-nav-link>
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-sidebar">
+        <x-nav-link :href="route('employee.my-tasks')" :active="request()->routeIs('employee.my-tasks')" class="nav-sidebar">
             {{ __('My Tasks') }}
         </x-nav-link>
         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-sidebar">
