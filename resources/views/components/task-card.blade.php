@@ -14,10 +14,13 @@
             <li>re-check</li>
             <li>meeting on sunday</li>
         </div>
-        <x-submit-button/>
-        {{-- <x-uploaded-button/>
-        <x-download-button/>
-        <x-edit-delete-buttons/> --}}
+        {{-- <x-submit-button/>
+        <x-uploaded-button/>
+        <x-download-button/> --}}
+        <x-edit-delete-buttons/>
     </div>
-    <div class="text-sm text-right text-[#B5B5B5]">20 Juni - 30 Juni 2024</div>
+    <div class="text-sm text-right text-[#B5B5B5] mt-1">
+        <i class="fa-solid fa-calendar fa-sm mr-1"></i>
+        20 Juni - 30 Juni 2024
+    </div>
 </div>

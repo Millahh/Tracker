@@ -4,7 +4,10 @@
             <p class="text-[#496569] text-xl font-bold"> 👋 Hi, Munirotul Millah! </p>
             <hr class="my-1">
             <p class="italic text-white text-base font-light"> This is just a random quote by "Munirotul Millah" : If it meant to be, than it’ll happen. </p>
-            <p class="text-white text-sm font-light text-right">Jumat, 24 Juni 2024</p>
+            <p class="text-white text-sm font-light text-right">
+                <i class="fa-solid fa-calendar fa-sm mr-1"></i>
+                Jumat, 24 Juni 2024
+            </p>
         </div>
         <div class="row-span-2 rounded-xl border bg-[#F4F9FA] p-7">
             <p class="text-[#3E5457] text-xl font-bold pb-3"> 🕐 Upcoming Tasks</p>
