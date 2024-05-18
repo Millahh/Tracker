@@ -8,18 +8,17 @@
 }
 .nav-container{
     margin: 0 2.5rem;
-    /* padding-top: 0.75rem;
-    border-top: 0.1rem solid rgba(255, 255, 255, 0.4); */
 }
 .nav-sidebar{
     padding: 0.75rem;
     display: block;
 }
-.nav-sidebar:hover, .nav-sidebar:active, .nav-sidebar:focus{
+.nav-sidebar:hover, .nav-sidebar:focus{
     background-color: #FDFDFD;
     color: #77AFB7;
-    border-radius: 5px;
+    border-radius: 6px;
     box-shadow: 100px;
+
 }
 .dashboard{
     font-family: "Inria Sans", sans-serif;
