@@ -1,6 +1,6 @@
 <x-app-layout class="">
-    <div class="dashboard grid grid-rows-4  grid-flow-col gap-4 min-h-screen py-5 px-10">
-        <div class="bg-card bg-cover rounded-xl px-7 py-6">
+    <div class="dashboard grid-rows-3 grid-flow-col gap-4 min-h-screen py-5 px-10">
+        <div class="part-1 bg-card bg-cover rounded-xl px-7 py-6">
             <p class="text-[#496569] text-xl font-bold"> 👋 Hi, Munirotul Millah! </p>
             <hr class="my-1">
             <p class="italic text-white text-base font-light"> This is just a random quote by "Munirotul Millah" : If it meant to be, than it’ll happen. </p>
@@ -9,10 +9,10 @@
                 Jumat, 24 Juni 2024
             </p>
         </div>
-        <div class="row-span-2 rounded-xl border bg-[#F4F9FA] p-7">
+        <div class="part-2 row-span-2 rounded-xl border bg-[#F4F9FA] p-7">
             <p class="text-[#3E5457] text-xl font-bold pb-3"> 🕐 Upcoming Tasks</p>
             <div class="border-2 p-3 rounded-xl">
-                <div class="grid grid-cols-3 gap-4">
+                <div class="upcoming-info grid grid-cols-3 gap-4">
                     <p class="col-span-2 font-bold text-lg pl-2">Input employees' data</p>
                     <p class="bg-[#FFDADA] rounded-2xl text-center text-red-400 text-sm self-center p-1">Due 31 May</p>
                 </div>
@@ -27,7 +27,7 @@
                 </div>
             </div>
         </div>
-        <div class="row-span-3 border-2 rounded-xl p-5">
+        <div class="part-3 row-span-3 border-2 rounded-xl p-5">
             <p class="text-[#3E5457] text-xl font-bold pb-3">📌 My Tasks</p>
             <x-task-preview/>
             <hr class="my-4">

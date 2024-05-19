@@ -19,10 +19,40 @@
     color: #77AFB7;
     border-radius: 6px;
     box-shadow: 100px;
-
 }
 .dashboard{
     font-family: "Inria Sans", sans-serif;
+    display: grid;
+}
+
+@media only screen and (max-width: 991px) {
+    /* aside{
+        display: none;
+    } */
+    .upcoming-info{
+        display:inline;
+    }
+    .antialiased{
+        overflow-x: hidden;
+    }
+    .dashboard{
+        overflow-x: hidden;
+        padding-left: 70px;
+        padding-right: 70px;
+        display:block;
+    }
+    .part-1, .part-2, .part-3 {
+        margin-bottom: 1.2rem;
+    }
+    .text-xl{
+        font-size: 18px;
+    }
+    .text-lg{
+        font-size: 16px;
+    }
+    .text-sm, .text-base, p, li{
+        font-size: 14px;
+    }
 }
 .tasks{
     overflow-x: auto;

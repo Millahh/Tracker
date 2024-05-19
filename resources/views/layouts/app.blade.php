@@ -15,7 +15,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="antialiased overflow-y-hidden">
+    <body class="antialiased">
         <div class="min-h-screen bg-custom bg-cover">
             @include('layouts.sidebar')
 
