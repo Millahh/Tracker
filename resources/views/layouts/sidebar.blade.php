@@ -4,23 +4,40 @@
     </div>
     <div class="nav-container">
         <hr class="mb-3">
-        {{-- <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-sidebar">
-            {{ __('Dashboard') }}
-        </x-nav-link> --}}
-        <x-nav-link :href="route('employee.my-tasks')" :active="request()->routeIs('employee.my-tasks')" class="nav-sidebar">
-            {{ __('My Tasks') }}
-        </x-nav-link>
-        {{-- <x-nav-link :href="route('employee.dashboard')" :active="request()->routeIs('employee.dashboard')" class="nav-sidebar">
-            {{ __('Completed') }}
-        </x-nav-link> --}}
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-            <x-nav-link :href="route('logout')"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                {{ __('Log Out') }}
+        @if (Auth::user()->role === "employee")
+            <x-nav-link :href="route('employee.dashboard')" :active="request()->routeIs('employee.dashboard')" class="nav-sidebar">
+                {{ __('Dashboard') }}
             </x-nav-link>
-        </form>
+            <x-nav-link :href="route('employee.my-tasks')" :active="request()->routeIs('employee.my-tasks')" class="nav-sidebar">
+                {{ __('My Tasks') }}
+            </x-nav-link>
+            <x-nav-link :href="route('/')" :active="request()->routeIs('/')" class="nav-sidebar">
+                {{ __('Completed') }}
+            </x-nav-link>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __(' Log Out') }}
+                </x-nav-link>
+            </form>
+        @else
+            <x-nav-link :href="route('employer.tasks')" :active="request()->routeIs('employer.tasks')" class="nav-sidebar">
+                {{ __('Tasks') }}
+            </x-nav-link>
+            <x-nav-link :href="route('/')" :active="request()->routeIs('/')" class="nav-sidebar">
+                {{ __('Completed') }}
+            </x-nav-link>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <x-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Log Out') }}
+                </x-nav-link>
+            </form>
+        @endif
     </div>
 </aside>
 
@@ -40,20 +57,32 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            {{-- <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link> --}}
+            @if (Auth::user()->role === "employee")
+                <x-responsive-nav-link :href="route('employee.dashboard')" :active="request()->routeIs('employee.dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link :href="route('employer.tasks')" :active="request()->routeIs('employer.tasks')">
+                    {{ __('Tasks') }}
+                </x-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->
         <div class="pb-1 border-t border-gray-200">
             <div class="mt-1 space-y-1">
-                <x-responsive-nav-link :href="route('employee.my-tasks')" :active="request()->routeIs('employee.my-tasks')">
-                    {{ __('My Tasks') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Completed') }}
-                </x-responsive-nav-link>
+                @if (Auth::user()->role === "employee")
+                    <x-responsive-nav-link :href="route('employee.my-tasks')" :active="request()->routeIs('employee.my-tasks')">
+                        {{ __('My Tasks') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('Completed') }}
+                    </x-responsive-nav-link>
+                @else
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('Completed') }}
+                    </x-responsive-nav-link>
+                @endif
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

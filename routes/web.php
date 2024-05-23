@@ -9,14 +9,15 @@ Route::get('/', function () {
     return view('/auth/login');
 })->name('/');
 
+
 //employer routes
-Route::middleware(['auth','verified','role:employer'])->group(function () {
-    Route::get('/employer/dashboard',[EmployerController::class,'dashboard']);
+Route::middleware(['auth','verified','role:employer'])->group(function (){
+    Route::get('/employer/tasks',[EmployerController::class,'dashboard'])->name('employer.tasks');
 });
 
 //employee routes
 Route::middleware(['auth','verified','role:employee'])->group(function () {
-    Route::get('/employee/dashboard',[EmployeeController::class,'dashboard']);
+    Route::get('/employee/dashboard',[EmployeeController::class,'dashboard'])->name('employee.dashboard');
 });
 
 Route::get('/my-tasks', function () {

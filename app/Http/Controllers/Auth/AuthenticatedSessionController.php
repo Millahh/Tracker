@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
             $request->session()->regenerate();
             $url = "";
             if($request->user()->role === "employer"){
-                $url = "employer/dashboard";
+                $url = "employer/tasks";
             }elseif($request->user()->role === "employee"){
                 $url = "employee/dashboard";
             }else{
@@ -53,6 +53,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
+        Auth::guard('employee')->logout();
+        Auth::guard('employer')->logout();
 
         $request->session()->invalidate();
 

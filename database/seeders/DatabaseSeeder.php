@@ -22,5 +22,13 @@ class DatabaseSeeder extends Seeder
             'password' => '12345678',
             'role' => 'employer',
         ]);
+        //for testing
+        User::factory()->create([
+            'first_name' => 'Munirotul',
+            'last_name' => 'Millah',
+            'NIP' => '123456789',
+            'password' => '12345678',
+            'role' => 'employee',
+        ]);
     }
 }
