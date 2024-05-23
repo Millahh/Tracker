@@ -25,26 +25,25 @@ class AuthenticatedSessionController extends Controller
      */
     public function authenticate(Request $request)
     {
-        // dd('masuk sini ga ya');
-        // $user = Auth::user();
-        // $request->authenticate();
-        // if(!Auth::check()){
-        //     dd($user);
-        //     return redirect('welcome');
-        //    }
-
         $credentials = $request->validate([
             'NIP' => ['required', 'string'],
             'password' => ['required', 'string'],
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
+            $url = "";
+            if($request->user()->role === "employer"){
+                $url = "employer/dashboard";
+            }elseif($request->user()->role === "employee"){
+                $url = "employee/dashboard";
+            }else{
+                $url = "/";  
+            }
+            return redirect()->intended($url);
         };
         // $request->session()->regenerate();
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('/', absolute: false));
     
     }
 

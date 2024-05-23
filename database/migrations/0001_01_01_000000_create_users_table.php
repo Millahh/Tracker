@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('NIP')->unique();
             $table->string('password');
+            $table->enum('role',['employer', 'employee'])->default('employee');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -43,6 +43,9 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div> --}}
 
+        <!-- Hidden Role -->
+        <input id="role" name="role" type="hidden" value="employee">
+
         <!-- Login -->
         <div class="block mt-2 text-sm text-[#3E5457]">
             <span>Already have an account? </span><a class="cursor-pointer hover:text-blue-500 focus:text-blue-500 underline" href="{{ route('login') }}" >{{ __('Login here!') }}</a>

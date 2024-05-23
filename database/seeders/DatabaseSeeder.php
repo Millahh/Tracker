@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             'last_name' => 'Millah',
             'NIP' => '12345678',
             'password' => '12345678',
+            'role' => 'employer',
         ]);
     }
 }

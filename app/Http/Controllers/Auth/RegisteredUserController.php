@@ -34,6 +34,7 @@ class RegisteredUserController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'NIP' => ['required', 'numeric', 'unique:'.User::class],
             'password' => ['required', Rules\Password::defaults()],
+            'role' => ['required', 'string'],
         ]);
 
         $user = User::create([
@@ -41,12 +42,13 @@ class RegisteredUserController extends Controller
             'last_name' => $request->last_name,
             'NIP' => $request->NIP,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect(route('/', absolute: false));
     }
 }

@@ -1,15 +1,23 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', function () {
-    return view('/tracker/tracker-employee/dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return view('/auth/login');
+})->name('/');
+
+//employer routes
+Route::middleware(['auth','verified','role:employer'])->group(function () {
+    Route::get('/employer/dashboard',[EmployerController::class,'dashboard']);
+});
+
+//employee routes
+Route::middleware(['auth','verified','role:employee'])->group(function () {
+    Route::get('/employee/dashboard',[EmployeeController::class,'dashboard']);
+});
 
 Route::get('/my-tasks', function () {
     return view('/tracker/tracker-employee/my-tasks');

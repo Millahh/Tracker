@@ -21,6 +21,7 @@ class User extends Authenticatable
         'last_name',
         'NIP',
         'password',
+        'role',
     ];
 
     /**
@@ -33,6 +34,7 @@ class User extends Authenticatable
         'last_name',
         'NIP',
         'password',
+        'role',
     ];
 
     /**
