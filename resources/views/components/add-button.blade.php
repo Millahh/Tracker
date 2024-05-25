@@ -1,1 +1,1 @@
-<button class="absolute bottom-5 right-5 h-16 w-16 rounded-full text-center my-auto align-top text-5xl font-bold bg-white text-[#8BCCD6] shadow-lg">+</button>
+<button data-modal-target="static-modal" data-modal-toggle="static-modal" class="absolute bottom-5 right-5 h-16 w-16 rounded-full text-center my-auto align-top text-5xl font-bold bg-white text-[#8BCCD6] shadow-lg">+</button>
