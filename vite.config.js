@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 './node_modules/flowbite/dist/flowbite.min.js',
+                './node_modules/flowbite/dist/datepicker.js',
             ],
             refresh: true,
         }),

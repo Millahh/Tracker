@@ -25,6 +25,19 @@
     display: grid;
 }
 
+textarea:focus, #static-modal input:focus, .date-picker datepicker:focus{
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.0);
+    outline: transparent;
+    outline: red;
+}
+.datepicker-picker{
+    background-color: #FDFDFD;
+}
+
+#task_checkpoints:focus::placeholder{
+    color:black;
+}
+
 @media only screen and (max-width: 991px) {
     /* aside{
         display: none;
