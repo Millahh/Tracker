@@ -20,4 +20,10 @@ class Employer extends Model
         'task_checkpoints',
         'task_due',
     ];
+    protected function casts(): array
+    {
+        return [
+            'task_checkpoints' => 'array'
+        ];
+    }
 }

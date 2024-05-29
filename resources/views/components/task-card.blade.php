@@ -4,15 +4,12 @@
         <div class="bg-[#889BFF] h-4 rounded-full " style="width: 59%"></div>
     </div>
     <div class="text-[#3E5457] rounded-lg border-[#B9D6DA] border-2 p-3">
-        <p class="font-bold text-lg">INI JUDUL</p>
-        <p class="text-sm">is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+        <p class="font-bold text-lg">{{$task->task_name}}</p>
+        <p class="text-sm">{{$task->task_desc}}</p>
         <div class="checklists px-4">
-            <li>30 new employees</li>
-            <li>re-check</li>
-            <li>meeting on sunday</li>
-            <li>30 new employees</li>
-            <li>re-check</li>
-            <li>meeting on sunday</li>
+            @foreach ($task->task_checkpoints as $checkpoint)
+                <li>{{$checkpoint}}</li>
+            @endforeach
         </div>
         {{-- <x-submit-button/>
         <x-uploaded-button/>
@@ -21,6 +18,6 @@
     </div>
     <div class="text-sm text-right text-[#B5B5B5] mt-1">
         <i class="fa-solid fa-calendar fa-sm mr-1"></i>
-        20 Juni - 30 Juni 2024
+        {{$task->task_due}}
     </div>
 </div>

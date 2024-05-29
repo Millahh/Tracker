@@ -12,7 +12,8 @@ Route::get('/', function () {
 
 //employer routes
 Route::middleware(['auth','verified','role:employer'])->group(function (){
-    Route::get('/employer/tasks',[EmployerController::class,'dashboard'])->name('employer.tasks');
+    Route::resource('employer', EmployerController::class);
+    Route::get('/employer/tasks',[EmployerController::class,'show'])->name('employer.tasks');
 });
 
 //employee routes

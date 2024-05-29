@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,20 +17,34 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
+        DB::table('users')->insert([[
             'first_name' => 'Munirotul',
             'last_name' => 'Millah',
             'NIP' => '12345678',
-            'password' => '12345678',
+            'password' => Hash::make('12345678'),
             'role' => 'employer',
-        ]);
-        //for testing
-        User::factory()->create([
+        ],
+        [
             'first_name' => 'Munirotul',
             'last_name' => 'Millah',
             'NIP' => '123456789',
-            'password' => '12345678',
+            'password' => Hash::make('12345678'),
             'role' => 'employee',
-        ]);
+        ]]);
+
+        DB::table('employers')->insert([[
+            'user_id' => 1,
+            'task_name' => 'Frontend Web',
+            'task_desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            'task_checkpoints' => json_encode(['Monthly meeting', 'Task division', 'Check progress']),
+            'task_due' => Carbon::parse('2024-07-01'),
+        ],
+        [
+            'user_id' => 1,
+            'task_name' => 'Frontend Web',
+            'task_desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            'task_checkpoints' => json_encode(['Monthly meeting', 'Task division', 'Check progress']),
+            'task_due' => Carbon::parse('2024-07-01'),
+        ]]);
     }
 }

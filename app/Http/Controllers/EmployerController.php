@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class EmployerController extends Controller
 {
-    public function dashboard(){
-        // $tasks = Employer::all()
-        // ->orderBy("created_at","desc");
-        // return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
-        return view('tracker.tracker-employer.tasks');
+    public function show(){
+        $tasks = Employer::all()
+        ->where('user_id', request()->user()->id)
+        ->sortBy("created_at");
+        view('components.task-card',['tasks'=> $tasks]);
+        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
+        // return view('tracker.tracker-employer.tasks');
     }
 
     public function create(){

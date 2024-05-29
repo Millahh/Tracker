@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained();
             $table->string('task_name');
             $table->string('task_desc');
-            $table->string('task_checkpoints');
-            $table->string('task_due');
+            $table->json('task_checkpoints');
+            $table->date('task_due');
             $table->timestamps('created_at');
         });
     }
