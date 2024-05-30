@@ -1,7 +1,7 @@
 @include('tracker.tracker-employer.task-form')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <x-app-layout>
-    {{-- {{dd($tasks[0]->task_desc);}} --}}
     <x-add-button/>
     <div class="p-5 min-h-screen">
         <div class="tasks flex min-w-screen pb-5">

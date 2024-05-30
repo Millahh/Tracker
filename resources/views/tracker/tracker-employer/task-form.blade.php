@@ -1,6 +1,6 @@
   <!-- Main modal -->
   <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-screen">
-      <div class="relative p-4 w-full max-w-4xl h-full max-h-screen">
+    <div class="relative p-4 w-full max-w-4xl h-full max-h-screen">
           <!-- Modal content -->
           <div class="relative bg-white rounded-lg shadow h-full max-h-screen">
               <!-- Modal header -->
@@ -42,10 +42,15 @@
                     <label for="task_desc" class="pt-2 block text-md text-[#3E5457] font-bold">Description</label>
                     <textarea rows="" id="task_desc" name="task_desc" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Description goes here.." required ></textarea>
                     <!-- Task Checkpoints -->
-                    <label for="task_desc" class="pt-2 block text-md text-[#3E5457] font-bold">Task Breakdown</label>
-                    <div class="task_checkpoint flex m-0">
-                        <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                        <input type="text" id="task_checkpoints" name="task_checkpoints" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                    <div class="flex pt-2">
+                        <label for="task_desc" class="block text-md text-[#3E5457] font-bold mr-2">Task Breakdown</label>
+                        <button id="btn1" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
+                    </div>
+                    <div id="checkpoints">
+                        <div class="flex mb-2">
+                            <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
+                            <input type="text" name="inputs[0]['task_checkpoints']" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                        </div>
                     </div>
                 </div>
                 <!-- Modal footer -->
@@ -56,3 +61,18 @@
           </div>
       </div>
   </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    var i = 0;
+    $(document).ready(function(){
+    $("#btn1").click(function(){
+        ++i;
+        $("#checkpoints").append(
+            `<div class="flex mb-2">
+                <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
+                <input type="text" name="inputs[`+i+`][task_checkpoints]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+            </div>`);
+    });
+    });
+</script>
