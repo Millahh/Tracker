@@ -13,16 +13,9 @@ class EmployerController extends Controller
         ->sortBy("created_at");
         view('components.task-card',['tasks'=> $tasks]);
         return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
-        // return view('tracker.tracker-employer.tasks');
-    }
-
-    public function create(){
-        return view('/');
-        // belom bikin bjrot
     }
 
     public function store(Request $request){
-        // gangerti tipe datanya, menyusul yeah, sesuai kebutuhan aj
         $data = $request->validate([
             'task_name' => ['required'],
             'task_desc' => ['required'],
@@ -35,7 +28,8 @@ class EmployerController extends Controller
     }
 
     public function edit(Employer $employer){
-        return view('', ['employer'=> $employer]);
+        // dd($employer);
+        // return view('tracker.tracker-employer.tasks', ['task'=> $employer]);
     }
 
     public function update(Request $request, Employer $employer){

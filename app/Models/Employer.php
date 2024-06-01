@@ -9,6 +9,7 @@ class Employer extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'user_id',
         'task_name',
         'task_desc',
         'task_checkpoints',

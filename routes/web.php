@@ -14,6 +14,7 @@ Route::get('/', function () {
 Route::middleware(['auth','verified','role:employer'])->group(function (){
     Route::resource('employer', EmployerController::class);
     Route::get('/employer/tasks',[EmployerController::class,'show'])->name('employer.tasks');
+    // Route::get('/employer/',[EmployerController::class,'show'])->name('employer.edit');
 });
 
 //employee routes
