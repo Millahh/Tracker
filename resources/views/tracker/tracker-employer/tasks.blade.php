@@ -1,4 +1,4 @@
-@include('tracker.tracker-employer.task-form')
+@include('tracker.tracker-employer.task-form', ['user_employee'=>$user_employee])
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <x-app-layout>

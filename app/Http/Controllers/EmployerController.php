@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Employer;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -11,8 +12,10 @@ class EmployerController extends Controller
         $tasks = Employer::all()
         ->where('user_id', request()->user()->id)
         ->sortBy("created_at");
+        $user_employee = User::all()
+        ->where('role', 'employee');
         view('components.task-card',['tasks'=> $tasks]);
-        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
+        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks, 'user_employee'=> $user_employee]);
     }
 
     public function store(Request $request){

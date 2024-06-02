@@ -30,7 +30,22 @@ class DatabaseSeeder extends Seeder
             'NIP' => '123456789',
             'password' => Hash::make('12345678'),
             'role' => 'employee',
-        ]]);
+        ],
+        [
+            'first_name' => 'Muhammad',
+            'last_name' => 'Daud',
+            'NIP' => '123456780',
+            'password' => Hash::make('12345678'),
+            'role' => 'employee',
+        ],
+        [
+            'first_name' => 'Jessica',
+            'last_name' => 'Monica',
+            'NIP' => '123456781',
+            'password' => Hash::make('12345678'),
+            'role' => 'employee',
+        ],
+    ]);
 
         DB::table('employers')->insert([[
             'user_id' => 1,

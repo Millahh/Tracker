@@ -11,6 +11,7 @@
                 <li>{{$checkpoint}}</li>
             @endforeach
         </div>
+        <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
         {{-- <x-submit-button/>
         <x-uploaded-button/>
         <x-download-button/> --}}

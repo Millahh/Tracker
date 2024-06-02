@@ -41,21 +41,40 @@
                     <!-- Task Description -->
                     <label for="task_desc" class="pt-2 block text-md text-[#3E5457] font-bold">Description</label>
                     <textarea rows="" id="task_desc" name="task_desc" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Description goes here.." required ></textarea>
-                    <!-- Task Checkpoints -->
-                    <div class="flex pt-2">
-                        <label for="task_desc" class="block text-md text-[#3E5457] font-bold mr-2">Task Breakdown</label>
-                        <button id="btn1" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
-                    </div>
-                    <div id="checkpoints">
-                        <div class="flex mb-2">
-                            <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                            <input type="text" name="inputs[0]['task_checkpoints']" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                    
+                    <div class="grid grid-rows-1 grid-flow-col gap-10">
+                        <!-- Task Checkpoints -->
+                        <div class="col space-y-2">
+                            <div class="flex pt-2">
+                                <label for="task_desc" class="block text-md text-[#3E5457] font-bold mr-2">Task Breakdown</label>
+                                <button id="btn1" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
+                            </div>
+                            <div id="checkpoints">
+                                <div class="flex mb-2">
+                                    <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
+                                    <input type="text" name="task_checkpoints[0]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col space-y-2">
+                            <div>
+                                <label for="task_assignment" class="pt-2 block text-md text-[#3E5457] font-bold mr-2">Task Assignment</label>
+                                <p class="text-xs text-neutral-400">*Fill the checkbox to assign task</p>
+                            </div>
+                            <div class="overflow-auto">
+                                @foreach ($user_employee as $employee)
+                                    <div class="flex mb-2 text-sm">
+                                        <input id="default-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer">
+                                        <p class="px-2">{{$employee->first_name}} {{$employee->last_name}}</p>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="absolute bottom-0 right-0 p-4">
-                    <button data-modal-hide="static-modal" type="button" class="py-2 px-5 text-md font-medium text-white focus:outline-none bg-[#77AFB7] rounded-lg focus:z-10 focus:bg-[#517176] hover:bg-[#517176]">Save</button>
+                    <button data-modal-hide="static-modal" type="submit" class="py-2 px-5 text-md font-medium text-white focus:outline-none bg-[#77AFB7] rounded-lg focus:z-10 focus:bg-[#517176] hover:bg-[#517176]">Save</button>
                 </div>
               </form>
           </div>
@@ -71,7 +90,7 @@
         $("#checkpoints").append(
             `<div class="flex mb-2">
                 <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                <input type="text" name="inputs[`+i+`][task_checkpoints]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                <input type="text" name="task_checkpoints[`+i+`]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
             </div>`);
     });
     });
