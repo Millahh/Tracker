@@ -58,13 +58,16 @@
                         </div>
                         <div class="col space-y-2">
                             <div>
-                                <label for="task_assignment" class="pt-2 block text-md text-[#3E5457] font-bold mr-2">Task Assignment</label>
+                                <label for="task_assignments" class="pt-2 block text-md text-[#3E5457] font-bold mr-2">Task Assignment</label>
                                 <p class="text-xs text-neutral-400">*Fill the checkbox to assign task</p>
                             </div>
-                            <div class="overflow-auto">
+                            <div class="overflow-auto h-3/6 w-4/5">
+                                <?php $assignment_loop=-1 ?>
                                 @foreach ($user_employee as $employee)
+                                    <?php $assignment_loop+=1 ?>
                                     <div class="flex mb-2 text-sm">
-                                        <input id="default-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer">
+                                        <input checked id="default-checkbox" type="checkbox" value="false" name="task_assignments[{{$assignment_loop}}]['{{$employee->id}}']" class="hidden">
+                                        <input id="default-checkbox" type="checkbox" value="true" name="task_assignments[{{$assignment_loop}}]['{{$employee->id}}']" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer">
                                         <p class="px-2">{{$employee->first_name}} {{$employee->last_name}}</p>
                                     </div>
                                 @endforeach

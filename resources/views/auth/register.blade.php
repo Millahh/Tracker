@@ -45,6 +45,7 @@
 
         <!-- Hidden Role -->
         <input id="role" name="role" type="hidden" value="employee">
+        <input id="user_id" name="user_id" type="hidden">
 
         <!-- Login -->
         <div class="block mt-2 text-sm text-[#3E5457]">

@@ -47,6 +47,16 @@ class DatabaseSeeder extends Seeder
         ],
     ]);
 
+    DB::table('employees')->insert([[
+        'user_id' => 2,
+    ],
+    [
+        'user_id' => 3,
+    ],
+    [
+        'user_id' => 4,
+    ]]);
+
         DB::table('employers')->insert([[
             'user_id' => 1,
             'task_name' => 'Frontend Web',

@@ -11,6 +11,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
+use App\Models\Employee;
 
 class RegisteredUserController extends Controller
 {
@@ -44,6 +45,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
+
+        $employee['user_id'] = $user->id;
+        Employee::create($employee);
 
         event(new Registered($user));
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Employer;
+use App\Models\Employee;
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -19,14 +20,22 @@ class EmployerController extends Controller
     }
 
     public function store(Request $request){
-        $data = $request->validate([
+        $employer_data = $request->validate([
             'task_name' => ['required'],
             'task_desc' => ['required'],
             'task_checkpoints' => ['required'],
             'task_due' => ['required'],
+            'task_assignments' => ['required'],
         ]);
-        $data['user_id'] = $request->user()->id;
-        $employer = Employer::create($data);
+        $employer_data['user_id'] = $request->user()->id;
+        $employer = Employer::create($employer_data);
+
+        foreach ($employee_loop = Employee::all() as $employee_loop) {
+            foreach(array_keys($employer->task_assignments) as $keys){
+                if ($employee_loop->id == (int)$keys) $employee_data['tasks_id'] = $employer->id;
+            }
+            $employee_loop->update($employee_data);
+        }
         return redirect()->route('employer.tasks', $employer)->with('success','Saved successfully');
     }
 
