@@ -31,8 +31,12 @@ class EmployerController extends Controller
         $employer = Employer::create($employer_data);
 
         foreach ($employee_loop = Employee::all() as $employee_loop) {
-            foreach(array_keys($employer->task_assignments) as $keys){
-                if ($employee_loop->id == (int)$keys) $employee_data['tasks_id'] = $employer->id;
+            $employee_data['tasks_id']=[];
+            foreach($employer->task_assignments as $keys){
+                if ((array_values($keys)[0])==="true" && $employee_loop->user_id == array_keys($keys)[0]) {
+                    $employee_data['tasks_id'] = (array)$employee_loop->tasks_id; 
+                    array_push($employee_data['tasks_id'] , $employer->id); 
+                }
             }
             $employee_loop->update($employee_data);
         }

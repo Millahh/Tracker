@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeeController;
 
 Route::get('/', function () {
     return view('/auth/login');
@@ -13,13 +13,14 @@ Route::get('/', function () {
 //employer routes
 Route::middleware(['auth','verified','role:employer'])->group(function (){
     Route::resource('employer', EmployerController::class);
-    Route::get('/employer/tasks',[EmployerController::class,'show'])->name('employer.tasks');
+    Route::get('/tasks',[EmployerController::class,'show'])->name('tasks');
     // Route::get('/employer/',[EmployerController::class,'show'])->name('employer.edit');
 });
 
 //employee routes
 Route::middleware(['auth','verified','role:employee'])->group(function () {
-    Route::get('/employee/dashboard',[EmployeeController::class,'dashboard'])->name('employee.dashboard');
+    Route::get('/dashboard',[EmployeeController::class,'dashboard'])->name('dashboard');
+    Route::get('/my-tasks',[EmployeeController::class,'my_tasks'])->name('my-tasks');
 });
 
 Route::get('/my-tasks', function () {

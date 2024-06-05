@@ -5,10 +5,10 @@
     <div class="nav-container">
         <hr class="mb-3">
         @if (Auth::user()->role === "employee")
-            <x-nav-link :href="route('employee.dashboard')" :active="request()->routeIs('employee.dashboard')" class="nav-sidebar">
+            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-sidebar">
                 {{ __('Dashboard') }}
             </x-nav-link>
-            <x-nav-link :href="route('employee.my-tasks')" :active="request()->routeIs('employee.my-tasks')" class="nav-sidebar">
+            <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')" class="nav-sidebar">
                 {{ __('My Tasks') }}
             </x-nav-link>
             <x-nav-link :href="route('/')" :active="request()->routeIs('/')" class="nav-sidebar">
@@ -23,7 +23,7 @@
                 </x-nav-link>
             </form>
         @else
-            <x-nav-link :href="route('employer.tasks')" :active="request()->routeIs('employer.tasks')" class="nav-sidebar">
+            <x-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')" class="nav-sidebar">
                 {{ __('Tasks') }}
             </x-nav-link>
             <x-nav-link :href="route('/')" :active="request()->routeIs('/')" class="nav-sidebar">
@@ -57,12 +57,12 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            @if (Auth::user()->role === "employee")
-                <x-responsive-nav-link :href="route('employee.dashboard')" :active="request()->routeIs('employee.dashboard')">
+            @if (Auth::user()->role === "employer")
+                <x-responsive-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">
                     {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @else
-                <x-responsive-nav-link :href="route('employer.tasks')" :active="request()->routeIs('employer.tasks')">
+                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                     {{ __('Tasks') }}
                 </x-responsive-nav-link>
             @endif
@@ -72,7 +72,7 @@
         <div class="pb-1 border-t border-gray-200">
             <div class="mt-1 space-y-1">
                 @if (Auth::user()->role === "employee")
-                    <x-responsive-nav-link :href="route('employee.my-tasks')" :active="request()->routeIs('employee.my-tasks')">
+                    <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
                         {{ __('My Tasks') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('profile.edit')">

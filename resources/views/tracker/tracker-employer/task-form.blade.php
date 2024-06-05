@@ -66,8 +66,8 @@
                                 @foreach ($user_employee as $employee)
                                     <?php $assignment_loop+=1 ?>
                                     <div class="flex mb-2 text-sm">
-                                        <input checked id="default-checkbox" type="checkbox" value="false" name="task_assignments[{{$assignment_loop}}]['{{$employee->id}}']" class="hidden">
-                                        <input id="default-checkbox" type="checkbox" value="true" name="task_assignments[{{$assignment_loop}}]['{{$employee->id}}']" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer">
+                                        <input checked id="default-checkbox" type="checkbox" value=false name="task_assignments[{{$assignment_loop}}][{{$employee->id}}]" class="hidden">
+                                        <input id="default-checkbox" type="checkbox" value=true name="task_assignments[{{$assignment_loop}}][{{$employee->id}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer">
                                         <p class="px-2">{{$employee->first_name}} {{$employee->last_name}}</p>
                                     </div>
                                 @endforeach
