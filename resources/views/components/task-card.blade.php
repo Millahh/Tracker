@@ -15,7 +15,7 @@
         {{-- <x-submit-button/>
         <x-uploaded-button/>
         <x-download-button/> --}}
-        <x-edit-delete-buttons :task=$task/>
+        <x-edit-delete-buttons :task=$task :task=$task/>
     </div>
     <div class="text-sm text-right text-[#B5B5B5] mt-1">
         <i class="fa-solid fa-calendar fa-sm mr-1"></i>

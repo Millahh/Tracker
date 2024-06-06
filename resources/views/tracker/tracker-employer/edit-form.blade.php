@@ -42,23 +42,49 @@
                     <!-- Task Description -->
                     <label for="task_desc" class="pt-2 block text-md text-[#3E5457] font-bold">Description</label>
                     <textarea id="task_desc" name="task_desc" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Description goes here.." required >{{$task->task_desc}}</textarea>
-                    <!-- Task Checkpoints -->
-                    <div class="flex pt-2">
-                        <label for="task_checkpoints" class="block text-md text-[#3E5457] font-bold mr-2">Task Breakdown</label>
-                        <button id="{{$task->id}}" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
-                    </div>
-                    @foreach ($task->task_checkpoints as $checkpoint)
-                        <div id="cokcok">
-                            <div class="flex mb-2">
-                                <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                                <input type="text" id={{$task->id}} name="task_checkpoints[]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." value="{{$checkpoint}}"  />
+                    
+                    
+                    <div class="grid grid-rows-1 grid-flow-col gap-10">
+                        <!-- Task Checkpoints -->
+                        <div class="col space-y-2">
+                            <div class="flex pt-2">
+                                <label for="task_checkpoints" class="block text-md text-[#3E5457] font-bold mr-2">Task Breakdown</label>
+                                <button id="{{$task->id}}" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
+                            </div>
+                            @foreach ($task->task_checkpoints as $checkpoint)
+                                <div id="checkpoints">
+                                    <div class="flex mb-2">
+                                        <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
+                                        <input type="text" id={{$task->id}} name="task_checkpoints[]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." value="{{$checkpoint}}"  />
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="col space-y-2">
+                            <div>
+                                <label for="task_assignments" class="pt-2 block text-md text-[#3E5457] font-bold mr-2">Task Assignment</label>
+                                <p class="text-xs text-neutral-400">*Fill the checkbox to assign task</p>
+                            </div>
+                            <div class="overflow-auto h-3/6 w-4/5">
+                                <?php $assignment_loop=-1 ?>
+                                @foreach ($task->tasks_id as $task)
+                                <?php $assignment_loop+=1 ?>
+                                <div class="flex mb-2 text-sm">
+                                    @if ((array_values($task_assignments[$assignment_loop])[0])=="true")
+                                        <input checked id="checked-checkbox" type="checkbox" value=true name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                                    @else
+                                        <input id="default-checkbox" type="checkbox" value=false name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                                    @endif
+                                    <p class="px-2">{{(array_values($task)[0])}}</p>
+                                </div>
+                            @endforeach
                             </div>
                         </div>
-                    @endforeach
+                    </div>
                 </div>
                 <!-- Modal footer -->
                 <div class="absolute bottom-0 right-0 p-4">
-                    <button data-modal-hide="modal-edit-{{$task->id}}" type="submit" class="py-2 px-5 text-md font-medium text-white focus:outline-none bg-[#77AFB7] rounded-lg focus:z-10 focus:bg-[#517176] hover:bg-[#517176]">Save</button>
+                    <button data-modal-hide="modal-edit-{{$ID}}" type="submit" class="py-2 px-5 text-md font-medium text-white focus:outline-none bg-[#77AFB7] rounded-lg focus:z-10 focus:bg-[#517176] hover:bg-[#517176]">Save</button>
                 </div>
               </form>
           </div>
@@ -67,8 +93,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script>
       $(document).ready(function(){
-          $("#{{$task->id}}").click(function(){
-              $("#cokcok").append(
+          $("#{{$ID}}").click(function(){
+              $("#checkpoints").append(
                 `<div class="flex mb-2">
                     <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
                     <input type="text" name="task_checkpoints['j']" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.. />

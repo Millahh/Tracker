@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Employer;
 use App\Models\Employee;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -13,10 +14,18 @@ class EmployerController extends Controller
         $tasks = Employer::all()
         ->where('user_id', request()->user()->id)
         ->sortBy("created_at");
+
         $user_employee = User::all()
         ->where('role', 'employee');
-        view('components.task-card',['tasks'=> $tasks]);
-        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks, 'user_employee'=> $user_employee]);
+        $tasks_id = array();
+        foreach($user_employee as $employee){
+            array_push($tasks_id,[$employee->id => $employee->first_name.' '.$employee->last_name]);
+        }
+        for($loop=0; $loop<count($tasks); $loop++){
+            $tasks[$loop]['tasks_id'] = $tasks_id;
+        }
+
+        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
     }
 
     public function store(Request $request){
@@ -40,7 +49,7 @@ class EmployerController extends Controller
             }
             $employee_loop->update($employee_data);
         }
-        return redirect()->route('employer.tasks', $employer)->with('success','Saved successfully');
+        return redirect()->route('tasks', $employer)->with('success','Saved successfully');
     }
 
     public function edit(Employer $employer){
@@ -56,10 +65,10 @@ class EmployerController extends Controller
             'task_due' => ['required'],
         ]);
         $employer->update($data);
-        return redirect()->route('employer.tasks', $employer)->with('success','Edited successfully');
+        return redirect()->route('tasks', $employer)->with('success','Edited successfully');
     }
     public function destroy(Employer $employer){
         $employer->delete();
-        return redirect()->route('employer.tasks', $employer)->with('success','Deleted successfully');
+        return redirect()->route('tasks', $employer)->with('success','Deleted successfully');
     }
 }
