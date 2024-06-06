@@ -15,6 +15,7 @@ class EmployerController extends Controller
         ->where('user_id', request()->user()->id)
         ->sortBy("created_at");
 
+        // dd($tasks[0]->task_assignments[0]);
         $user_employee = User::all()
         ->where('role', 'employee');
         $tasks_id = array();
@@ -63,6 +64,7 @@ class EmployerController extends Controller
             'task_desc' => ['required'],
             'task_checkpoints' => ['required'],
             'task_due' => ['required'],
+            'task_assignments' => ['required'],
         ]);
         $employer->update($data);
         return redirect()->route('tasks', $employer)->with('success','Edited successfully');

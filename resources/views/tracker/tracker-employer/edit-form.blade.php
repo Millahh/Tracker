@@ -71,12 +71,15 @@
                                 <?php $assignment_loop+=1 ?>
                                 <div class="flex mb-2 text-sm">
                                     @if ((array_values($task_assignments[$assignment_loop])[0])=="true")
+                                        <input checked id="checked-checkbox" type="checkbox" value=false name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="hidden" />
                                         <input checked id="checked-checkbox" type="checkbox" value=true name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
                                     @else
-                                        <input id="default-checkbox" type="checkbox" value=false name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                                        <input checked id="checked-checkbox" type="checkbox" value=false name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="hidden" />
+                                        <input id="default-checkbox" type="checkbox" value=true name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
                                     @endif
                                     <p class="px-2">{{(array_values($task)[0])}}</p>
                                 </div>
+
                             @endforeach
                             </div>
                         </div>
