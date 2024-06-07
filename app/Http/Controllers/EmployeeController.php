@@ -45,7 +45,6 @@ class EmployeeController extends Controller
         $file->move('assets',$fileName);
         $data['file'] = $fileName; 
         $task->update($data);
-
         return redirect()->route('my-tasks', $display_tasks)->with('success','Edited successfully');
    	
     }
