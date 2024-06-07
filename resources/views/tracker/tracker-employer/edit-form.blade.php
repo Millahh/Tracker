@@ -66,21 +66,20 @@
                                 <p class="text-xs text-neutral-400">*Fill the checkbox to assign task</p>
                             </div>
                             <div class="overflow-auto h-3/6 w-4/5">
-                                <?php $assignment_loop=-1 ?>
+                                <?php $assignment_loop=-1  ?>
                                 @foreach ($task->tasks_id as $task)
                                 <?php $assignment_loop+=1 ?>
-                                <div class="flex mb-2 text-sm">
-                                    @if ((array_values($task_assignments[$assignment_loop])[0])=="true")
-                                        <input checked id="checked-checkbox" type="checkbox" value=false name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="hidden" />
-                                        <input checked id="checked-checkbox" type="checkbox" value=true name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
-                                    @else
-                                        <input checked id="checked-checkbox" type="checkbox" value=false name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="hidden" />
-                                        <input id="default-checkbox" type="checkbox" value=true name="task_assignments[{{$assignment_loop}}][{{(array_keys($task)[0])}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
-                                    @endif
-                                    <p class="px-2">{{(array_values($task)[0])}}</p>
-                                </div>
-
-                            @endforeach
+                                    <div class="flex mb-2 text-sm">
+                                        @if ((substr($task_assignments[$assignment_loop], 2))=="true")
+                                            <input checked id="checked-checkbox" type="checkbox" value={{(array_keys($task)[0])}}|false name="task_assignments[{{$assignment_loop}}]" class="hidden" />
+                                            <input checked id="checked-checkbox" type="checkbox" value={{(array_keys($task)[0])}}|true name="task_assignments[{{$assignment_loop}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                                        @else
+                                            <input checked id="checked-checkbox" type="checkbox" value={{(array_keys($task)[0])}}|false name="task_assignments[{{$assignment_loop}}]" class="hidden" />
+                                            <input id="default-checkbox" type="checkbox" value={{(array_keys($task)[0])}}|true name="task_assignments[{{$assignment_loop}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                                        @endif
+                                        <p class="px-2">{{(array_values($task)[0])}}</p>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

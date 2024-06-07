@@ -43,7 +43,7 @@ class EmployerController extends Controller
         foreach ($employee_loop = Employee::all() as $employee_loop) {
             $employee_data['tasks_id']=[];
             foreach($employer->task_assignments as $keys){
-                if ((array_values($keys)[0])==="true" && $employee_loop->user_id == array_keys($keys)[0]) {
+                if ((substr($keys, 2))==="true" && $employee_loop->user_id == (int)$keys[0]) {
                     $employee_data['tasks_id'] = (array)$employee_loop->tasks_id; 
                     array_push($employee_data['tasks_id'] , $employer->id); 
                 }
@@ -59,7 +59,7 @@ class EmployerController extends Controller
     }
 
     public function update(Request $request, Employer $employer){
-        dd($employer);
+        // dd($employer);
         $data = $request->validate([
             'task_name' => ['required'],
             'task_desc' => ['required'],
@@ -72,7 +72,7 @@ class EmployerController extends Controller
         foreach ($employee_loop = Employee::all() as $employee_loop) {
             $employee_data['tasks_id']=[];
             foreach($employer->task_assignments as $keys){
-                if ((array_values($keys)[0])==="true" && $employee_loop->user_id == array_keys($keys)[0]) {
+                if ((substr($keys, 2))==="true" && $employee_loop->user_id == (int)$keys[0]) {
                     $employee_data['tasks_id'] = (array)$employee_loop->tasks_id; 
                     array_push($employee_data['tasks_id'] , $employer->id); 
                 }

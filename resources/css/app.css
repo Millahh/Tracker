@@ -44,6 +44,14 @@ textarea:focus, #static-modal input:focus, .date-picker datepicker:focus{
     color:black;
 }
 
+.employee-uploaded::after {
+    content: "UPLOADED!";
+}
+
+.employee-uploaded:hover::after {
+     content: "CLICK HERE TO REUPLOAD";
+}
+
 @media only screen and (max-width: 991px) {
     /* aside{
         display: none;
