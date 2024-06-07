@@ -34,39 +34,44 @@ $progress = ($progress+$file)/(count($task->task_checkpoints)+1)*100;
                     <div class="flex mb-2 text-sm">
                         @if (is_null($task->task_progress))
                             <input checked id="default-checkbox" type="checkbox" value="false" name="task_progress[{{$count}}]" class="hidden">
-                            <input id="default-checkbox" type="checkbox" value="true" name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer">
+                            <input id="default-checkbox" type="checkbox" value="true" name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer checked:bg-[#77AFB7] checked:hover:bg-[#77AFB7]" @disabled(Auth::user()->role === "employer")>
                         @else
                             @if ($task->task_progress[$count]=="true")
-                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden" />
-                                <input checked id="checked-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden"/>
+                                <input checked id="checked-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer checked:bg-[#77AFB7] checked:hover:bg-[#77AFB7]" @disabled(Auth::user()->role === "employer")/>
                             @else
-                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden" />
-                                <input id="default-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden"/>
+                                <input id="default-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer checked:bg-[#77AFB7] checked:hover:bg-[#77AFB7]" @disabled(Auth::user()->role === "employer")/>
                             @endif
                         @endif
                         <p class="px-2">{{$checkpoint}}</p>
                     </div>
                 @endforeach
             </div>
+            @if (Auth::user()->role === "employee")
             <button type="submit">save progress</button>
         </form>
-        @if (Auth::user()->role === "employee")
-            @if (is_null($task->file))
-                <x-submit-button :task=$task/>
+                @if (is_null($task->file))
+                    <x-submit-button :task=$task/>
+                @else
+                    <x-uploaded-button :task=$task/>
+                @endif
             @else
-                <x-uploaded-button :task=$task/>
+                @if (is_null($task->file))
+                    <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
+                @else
+                    <x-download-button :task=$task/>
+                @endif
+                <x-edit-delete-buttons :task=$task/>
             @endif
-        @else
-            @if (is_null($task->file))
-                <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
-            @else
-                <x-download-button :task=$task/>
-            @endif
-            <x-edit-delete-buttons :task=$task/>
-        @endif
     </div>
     <div class="text-sm text-right text-[#B5B5B5] mt-1">
         <i class="fa-solid fa-calendar fa-sm mr-1"></i>
         {{$task->task_due}}
     </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+
+</script>
