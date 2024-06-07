@@ -19,7 +19,6 @@ class EmployeeController extends Controller
         $display_tasks = Employer::whereIn('id', $tasks_id)->get();
 
         return view('tracker.tracker-employee.dashboard', ['tasks'=> $display_tasks]);
-        // return view('tracker.tracker-employee.dashboard');
     }
 
     public function my_tasks(){
@@ -36,10 +35,10 @@ class EmployeeController extends Controller
         
         return view('tracker.tracker-employee.my-tasks', ['tasks'=> $display_tasks, 'employee'=> $employee]);
     }
-    public function update(Request $request, $display_tasks){
+    public function update_attachment(Request $request, $display_tasks){
         $task = Employer::findOrFail($display_tasks);
         $data = $request->validate([
-            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048', // Example validation rules
+            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048',
         ]);
         $file = $request->file('file');
         $fileName = $file->getClientOriginalName();
@@ -49,5 +48,15 @@ class EmployeeController extends Controller
 
         return redirect()->route('my-tasks', $display_tasks)->with('success','Edited successfully');
    	
+    }
+
+    public function update_progress(Request $request, $tasks){
+        $task = Employer::findOrFail($tasks);
+        $data['task_progress'] = $request->user()->id;
+        $data = $request->validate([
+            'task_progress' => 'required',
+        ]);
+        $task->update($data);
+        return redirect()->route('my-tasks', $tasks)->with('success','Edited successfully');
     }
 }

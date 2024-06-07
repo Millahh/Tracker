@@ -43,7 +43,6 @@
                     <label for="task_desc" class="pt-2 block text-md text-[#3E5457] font-bold">Description</label>
                     <textarea id="task_desc" name="task_desc" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Description goes here.." required >{{$task->task_desc}}</textarea>
                     
-                    
                     <div class="grid grid-rows-1 grid-flow-col gap-10">
                         <!-- Task Checkpoints -->
                         <div class="col space-y-2">
@@ -60,6 +59,7 @@
                                 </div>
                             @endforeach
                         </div>
+                        <!-- Task Division -->
                         <div class="col space-y-2">
                             <div>
                                 <label for="task_assignments" class="pt-2 block text-md text-[#3E5457] font-bold mr-2">Task Assignment</label>

@@ -20,9 +20,11 @@ Route::middleware(['auth','verified','role:employer'])->group(function (){
 
 //employee routes
 Route::middleware(['auth','verified','role:employee'])->group(function () {
-    Route::resource('employee', EmployeeController::class)->except(['edit']);
+    // Route::resource('employee', EmployeeController::class)->except(['edit']);
     Route::get('/dashboard',[EmployeeController::class,'dashboard'])->name('dashboard');
     Route::get('/my-tasks', [EmployeeController::class,'my_tasks'])->name('my-tasks');
+    Route::put('/update-attachment/{id}', [EmployeeController::class,'update_attachment'])->name('update-attachment');
+    Route::put('/update-progress/{id}', [EmployeeController::class,'update_progress'])->name('update-progress');
     // Route::get('/file-upload', [EmployeeController::class, 'showUploadForm']);
     // Route::post('/file-upload', [EmployeeController::class, 'store']);
 });

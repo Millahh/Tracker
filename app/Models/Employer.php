@@ -16,6 +16,7 @@ class Employer extends Model
         'task_due',
         'task_assignments',
         'file',
+        'task_progress',
     ];
     protected $hidden = [
         'task_name',
@@ -24,12 +25,14 @@ class Employer extends Model
         'task_due',
         'task_assignments',
         'file',
+        'task_progress',
     ];
     protected function casts(): array
     {
         return [
             'task_checkpoints' => 'array',
             'task_assignments' => 'array',
+            'task_progress' => 'array',
         ];
     }
 }

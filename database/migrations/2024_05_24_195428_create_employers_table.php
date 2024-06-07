@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('task_name');
             $table->string('task_desc');
             $table->json('task_checkpoints');
+            $table->json('task_progress')->nullable();
             $table->date('task_due');
             $table->json('task_assignments')->nullable();
             $table->text('file')->nullable();

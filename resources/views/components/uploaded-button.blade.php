@@ -1,4 +1,4 @@
-<form action="{{ route('employee.update', $task)}}" method="post" id="form" enctype="multipart/form-data">
+<form action="{{ route('update-attachment', $task->id)}}" method="post" id="form" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <input type="file" id="files" name="file" class="hidden cursor-pointer"/>

@@ -6,12 +6,32 @@
     <div class="text-[#3E5457] rounded-lg border-[#B9D6DA] border-2 p-3">
         <p class="font-bold text-lg">{{$task->task_name}}</p>
         <p class="text-sm">{{$task->task_desc}}</p>
-        <div class="checklists px-4">
-            @foreach ($task->task_checkpoints as $checkpoint)
-                <li>{{$checkpoint}}</li>
-            @endforeach
-        </div>
-        {{-- {{$task->file}} --}}
+        <form action="{{ route('update-progress', $task->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="checklists px-4">
+                <?php $count=-1 ?>
+                @foreach ($task->task_checkpoints as $checkpoint)
+                    <?php $count+=1 ?>
+                    <div class="flex mb-2 text-sm">
+                        @if (is_null($task->task_progress))
+                            <input checked id="default-checkbox" type="checkbox" value="false" name="task_progress[{{$count}}]" class="hidden">
+                            <input id="default-checkbox" type="checkbox" value="true" name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer">
+                        @else
+                            @if ($task->task_progress[$count]=="true")
+                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden" />
+                                <input checked id="checked-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                            @else
+                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden" />
+                                <input id="default-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer" />
+                            @endif
+                        @endif
+                        <p class="px-2">{{$checkpoint}}</p>
+                    </div>
+                @endforeach
+            </div>
+            <button type="submit">save progress</button>
+        </form>
         @if (Auth::user()->role === "employee")
             @if (is_null($task->file))
                 <x-submit-button :task=$task/>
