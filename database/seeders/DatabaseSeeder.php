@@ -50,12 +50,15 @@ class DatabaseSeeder extends Seeder
 
     DB::table('employees')->insert([[
         'user_id' => 1,
+        'tasks_id' => json_encode([1, 2]),
     ],
     [
         'user_id' => 2,
+        'tasks_id' => json_encode([1]),
     ],
     [
         'user_id' => 3,
+        'tasks_id' => json_encode([1, 2]),
     ]]);
 
     DB::table('employers')->insert([[
@@ -64,6 +67,7 @@ class DatabaseSeeder extends Seeder
         'task_desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         'task_checkpoints' => json_encode(['Task division', 'Check progress']),
         'task_due' => (Carbon::parse('2024-07-01'))->format('Y-m-d'),
+        'task_assignments' => json_encode([1=>"true",2=>"true",3=>"true"]),
     ],
     [
         'user_id' => 4,
@@ -71,6 +75,7 @@ class DatabaseSeeder extends Seeder
         'task_desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         'task_checkpoints' => json_encode(['Monthly meeting', 'Task division', 'Check progress']),
         'task_due' => (Carbon::parse('2024-07-01'))->format('Y-m-d'),
+        'task_assignments' => json_encode([1=>"true",2=>"false",3=>"true"]),
     ]]);
     }
 }

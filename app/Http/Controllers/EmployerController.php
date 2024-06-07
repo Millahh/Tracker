@@ -59,6 +59,7 @@ class EmployerController extends Controller
     }
 
     public function update(Request $request, Employer $employer){
+        dd($employer);
         $data = $request->validate([
             'task_name' => ['required'],
             'task_desc' => ['required'],
@@ -67,6 +68,17 @@ class EmployerController extends Controller
             'task_assignments' => ['required'],
         ]);
         $employer->update($data);
+
+        foreach ($employee_loop = Employee::all() as $employee_loop) {
+            $employee_data['tasks_id']=[];
+            foreach($employer->task_assignments as $keys){
+                if ((array_values($keys)[0])==="true" && $employee_loop->user_id == array_keys($keys)[0]) {
+                    $employee_data['tasks_id'] = (array)$employee_loop->tasks_id; 
+                    array_push($employee_data['tasks_id'] , $employer->id); 
+                }
+            }
+            $employee_loop->update($employee_data);
+        }
         return redirect()->route('tasks', $employer)->with('success','Edited successfully');
     }
     public function destroy(Employer $employer){
