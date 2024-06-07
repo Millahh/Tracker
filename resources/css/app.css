@@ -4,15 +4,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* SUBMIT BUTTON COMPONENT */
 ::-webkit-file-upload-button {
     display: none;
 }
 ::file-selector-button {
    display: none;
 }
+
+/* LOGIN REGISTER */
 .guest input::placeholder {
     font-size: .8rem;
 }
+
+/* USER LAYOUT */
 .nav-container{
     margin: 0 2.5rem;
 }
@@ -30,7 +35,21 @@
     font-family: "Inria Sans", sans-serif;
     display: grid;
 }
+div::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+}
+div::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+    height: 10px;
+}
+div::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #77afb7a4;
+}
 
+/* CALENDAR */
 textarea:focus, #static-modal input:focus, .date-picker datepicker:focus{
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.0);
     outline: transparent;
@@ -44,18 +63,38 @@ textarea:focus, #static-modal input:focus, .date-picker datepicker:focus{
     color:black;
 }
 
+/* UPLOADED BUTTON COMPONENT */
 .employee-uploaded::after {
     content: "UPLOADED!";
 }
 
 .employee-uploaded:hover::after {
-     content: "CLICK HERE TO REUPLOAD";
+     content: "";
 }
 
+.reupload {
+  display: none;
+}
+
+.employee-uploaded:hover .reupload {
+  display: inline;
+}
+
+/* TASK-CARD COMPONENT */
+.tasks{
+    overflow-x: auto;
+    /* white-space: nowrap; */
+    min-height: 95vh;
+}
+.tasks .card{
+    max-width: 10rem;
+    min-width: 20rem;
+    background-color: #FEFEFE;
+    height: fit-content;
+}
+
+/* RESPONSIVE */
 @media only screen and (max-width: 991px) {
-    /* aside{
-        display: none;
-    } */
     .upcoming-info{
         display:inline;
     }
@@ -80,30 +119,4 @@ textarea:focus, #static-modal input:focus, .date-picker datepicker:focus{
     .text-sm, .text-base, p, li{
         font-size: 14px;
     }
-}
-.tasks{
-    overflow-x: auto;
-    /* white-space: nowrap; */
-    min-height: 95vh;
-}
-.tasks .card{
-    max-width: 10rem;
-    min-width: 20rem;
-    background-color: #FEFEFE;
-    height: fit-content;
-}
-div::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background-color: transparent;
-  }
-  
-div::-webkit-scrollbar {
-    width: 12px;
-    background-color: transparent;
-    height: 10px;
-}
-
-div::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #77afb7a4;
 }

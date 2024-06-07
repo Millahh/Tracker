@@ -16,7 +16,7 @@
             @if (is_null($task->file))
                 <x-submit-button :task=$task/>
             @else
-                <x-uploaded-button/>
+                <x-uploaded-button :task=$task/>
             @endif
         @else
             @if (is_null($task->file))
