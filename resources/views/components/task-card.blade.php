@@ -11,11 +11,14 @@
                 <li>{{$checkpoint}}</li>
             @endforeach
         </div>
-        <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
-        {{-- <x-submit-button/>
-        <x-uploaded-button/>
+        {{-- <x-uploaded-button/>
         <x-download-button/> --}}
-        <x-edit-delete-buttons :task=$task :task=$task/>
+        @if (Auth::user()->role === "employee")
+            <x-submit-button :task=$task/>
+        @else
+            <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
+            <x-edit-delete-buttons :task=$task/>
+        @endif
     </div>
     <div class="text-sm text-right text-[#B5B5B5] mt-1">
         <i class="fa-solid fa-calendar fa-sm mr-1"></i>

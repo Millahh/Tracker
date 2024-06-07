@@ -8,7 +8,7 @@
             <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="nav-sidebar">
                 {{ __('Dashboard') }}
             </x-nav-link>
-            <x-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')" class="nav-sidebar">
+            <x-nav-link :href="route('my-tasks')" :active="request()->routeIs('my-tasks')" class="nav-sidebar">
                 {{ __('My Tasks') }}
             </x-nav-link>
             <x-nav-link :href="route('/')" :active="request()->routeIs('/')" class="nav-sidebar">
@@ -72,7 +72,7 @@
         <div class="pb-1 border-t border-gray-200">
             <div class="mt-1 space-y-1">
                 @if (Auth::user()->role === "employee")
-                    <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
+                    <x-responsive-nav-link :href="route('my-tasks')" :active="request()->routeIs('my-tasks')">
                         {{ __('My Tasks') }}
                     </x-responsive-nav-link>
                     <x-responsive-nav-link :href="route('profile.edit')">

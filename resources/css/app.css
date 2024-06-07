@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-file-upload-button {
+    display: none;
+}
+::file-selector-button {
+   display: none;
+}
 .guest input::placeholder {
     font-size: .8rem;
 }

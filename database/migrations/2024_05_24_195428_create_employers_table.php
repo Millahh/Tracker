@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('task_checkpoints');
             $table->date('task_due');
             $table->json('task_assignments')->nullable();
+            $table->text('file')->nullable();
             $table->timestamps('created_at');
         });
     }

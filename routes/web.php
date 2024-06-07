@@ -19,13 +19,12 @@ Route::middleware(['auth','verified','role:employer'])->group(function (){
 
 //employee routes
 Route::middleware(['auth','verified','role:employee'])->group(function () {
+    Route::resource('employee', EmployeeController::class)->except(['edit']);
     Route::get('/dashboard',[EmployeeController::class,'dashboard'])->name('dashboard');
-    Route::get('/my-tasks',[EmployeeController::class,'my_tasks'])->name('my-tasks');
+    Route::get('/my-tasks', [EmployeeController::class,'my_tasks'])->name('my-tasks');
+    // Route::get('/file-upload', [EmployeeController::class, 'showUploadForm']);
+    // Route::post('/file-upload', [EmployeeController::class, 'store']);
 });
-
-Route::get('/my-tasks', function () {
-    return view('/tracker/tracker-employee/my-tasks');
-})->middleware(['auth', 'verified'])->name('employee.my-tasks');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
