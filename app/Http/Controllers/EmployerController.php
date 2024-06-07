@@ -81,6 +81,10 @@ class EmployerController extends Controller
         }
         return redirect()->route('tasks', $employer)->with('success','Edited successfully');
     }
+    public function download(Request $request, $file)
+    {
+        return response()->download(public_path('assets/'.$file));
+    }
     public function destroy(Employer $employer){
         $employer->delete();
         return redirect()->route('tasks', $employer)->with('success','Deleted successfully');

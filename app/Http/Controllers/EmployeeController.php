@@ -42,9 +42,9 @@ class EmployeeController extends Controller
             'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048', // Example validation rules
         ]);
         $file = $request->file('file');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        // $fileName = time() . '_' . $file->getClientOriginalExtension();
+        $fileName = $file->getClientOriginalName();
         $file->move('assets',$fileName);
+        $data['file'] = $fileName; 
         $task->update($data);
 
         return redirect()->route('my-tasks', $display_tasks)->with('success','Edited successfully');

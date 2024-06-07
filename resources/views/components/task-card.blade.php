@@ -22,7 +22,7 @@
             @if (is_null($task->file))
                 <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
             @else
-                <x-download-button/>
+                <x-download-button :task=$task/>
             @endif
             <x-edit-delete-buttons :task=$task/>
         @endif

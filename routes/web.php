@@ -14,6 +14,7 @@ Route::get('/', function () {
 Route::middleware(['auth','verified','role:employer'])->group(function (){
     Route::resource('employer', EmployerController::class);
     Route::get('/tasks',[EmployerController::class,'show'])->name('tasks');
+    Route::get('/download/{file}',[EmployerController::class,'download']);
     // Route::get('/employer/',[EmployerController::class,'show'])->name('employer.edit');
 });
 
