@@ -4,7 +4,7 @@
             @forelse ($tasks as $task)
                 <x-task-card :task=$task/>
             @empty
-                <p class="text-2xl font-sans font-medium m-auto">You haven't been assigned a task yet.</p>
+                <p class="text-2xl font-sans font-medium m-auto">You haven't been completed a task yet.</p>
             @endforelse
         </div>
     </div>

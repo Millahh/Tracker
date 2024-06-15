@@ -11,8 +11,8 @@
             <x-nav-link :href="route('my-tasks')" :active="request()->routeIs('my-tasks')" class="nav-sidebar">
                 {{ __('My Tasks') }}
             </x-nav-link>
-            <x-nav-link :href="route('/')" :active="request()->routeIs('/')" class="nav-sidebar">
-                {{ __('Completed') }}
+            <x-nav-link :href="route('completed-tasks')" :active="request()->routeIs('completed-tasks')" class="nav-sidebar">
+                {{ __('Completed')}}
             </x-nav-link>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -26,7 +26,7 @@
             <x-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')" class="nav-sidebar">
                 {{ __('Tasks') }}
             </x-nav-link>
-            <x-nav-link :href="route('/')" :active="request()->routeIs('/')" class="nav-sidebar">
+            <x-nav-link :href="route('finished-tasks')" :active="request()->routeIs('finished-tasks')" class="nav-sidebar">
                 {{ __('Completed') }}
             </x-nav-link>
             <form method="POST" action="{{ route('logout') }}">

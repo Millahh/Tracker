@@ -3,7 +3,7 @@
     <p class="font-semibold text-xs text-gray-700 text-center">{{$task->task_percentage}}%</p>
     <div class="progress-bar w-full bg-gray-200 rounded-full h-4 mb-4 dark:bg-gray-300">
         @if ($task->task_percentage == 100)
-            <div class="bg-[#A3FF94] h-4 rounded-full " style="width:{{$task->task_percentage}}%"></div>
+            <div class="bg-[#A3FF94] h-4 rounded-full " style="width:100%"></div>
         @else
             <div class="bg-[#889BFF] h-4 rounded-full " style="width:{{$task->task_percentage}}%"></div>
         @endif

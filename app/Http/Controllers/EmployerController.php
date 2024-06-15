@@ -15,7 +15,26 @@ class EmployerController extends Controller
         ->where('user_id', request()->user()->id)
         ->sortBy("created_at");
 
-        // dd($tasks[0]->task_assignments[0]);
+        $user_employee = User::all()
+        ->where('role', 'employee');
+        $tasks_id = array();
+        foreach($user_employee as $employee){
+            array_push($tasks_id,[$employee->id => $employee->first_name.' '.$employee->last_name]);
+        }
+        dd($tasks);
+        for($loop=0; $loop<count($tasks); $loop++){
+            $tasks[$loop]['tasks_id'] = $tasks_id;
+        }
+
+        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
+    }
+
+    public function finished_tasks(){
+        $tasks = Employer::where('user_id', request()->user()->id)
+        ->where('task_percentage', 100)
+        ->orderBy("created_at")
+        ->get();
+
         $user_employee = User::all()
         ->where('role', 'employee');
         $tasks_id = array();
