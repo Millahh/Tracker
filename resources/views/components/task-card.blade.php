@@ -1,24 +1,11 @@
-<?php 
-$progress=0;
-$file=0;
-if (is_null($task->task_progress)) {
-    $progress=0;
-} else {
-    foreach ($task->task_progress as $boolean) {
-        $boolean == "true" ? $progress+=1 : $progress;
-    }
-}
-is_null($task->file) ? $file=0 : $file=1;
-$progress = ($progress+$file)/(count($task->task_checkpoints)+1)*100;
-?>
 
 <div class="card p-5 mx-5 border rounded-lg shadow-md">
-    <p class="font-semibold text-xs text-gray-700 text-center">{{(int)$progress}}%</p>
+    <p class="font-semibold text-xs text-gray-700 text-center">{{$task->task_percentage}}%</p>
     <div class="progress-bar w-full bg-gray-200 rounded-full h-4 mb-4 dark:bg-gray-300">
-        @if ($progress == 100)
-            <div class="bg-[#A3FF94] h-4 rounded-full " style="width:{{$progress}}%"></div>
+        @if ($task->task_percentage == 100)
+            <div class="bg-[#A3FF94] h-4 rounded-full " style="width:{{$task->task_percentage}}%"></div>
         @else
-            <div class="bg-[#889BFF] h-4 rounded-full " style="width:{{$progress}}%"></div>
+            <div class="bg-[#889BFF] h-4 rounded-full " style="width:{{$task->task_percentage}}%"></div>
         @endif
     </div>
     <div class="text-[#3E5457] rounded-lg border-[#B9D6DA] border-2 p-3">

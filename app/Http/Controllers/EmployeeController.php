@@ -44,6 +44,14 @@ class EmployeeController extends Controller
         $fileName = $file->getClientOriginalName();
         $file->move('assets',$fileName);
         $data['file'] = $fileName; 
+
+        $progress=0;
+        foreach ($task->task_progress as $boolean) {
+            $boolean == "true" ? $progress+=1 : $progress;
+        }
+        $progress = ($progress)/(count($task->task_progress))*100;
+        $data['task_percentage']=(int)$progress;
+
         $task->update($data);
         return redirect()->route('my-tasks', $display_tasks)->with('success','Edited successfully');
    	
@@ -51,11 +59,25 @@ class EmployeeController extends Controller
 
     public function update_progress(Request $request, $tasks){
         $task = Employer::findOrFail($tasks);
-        $data['task_progress'] = $request->user()->id;
+
         $data = $request->validate([
             'task_progress' => 'required',
         ]);
+        if(is_null($task->file)){
+            array_push($data['task_progress'], "false");
+        }else{
+            array_push($data['task_progress'], "true");
+        }
+
+        $progress=0;
+        foreach ($data['task_progress'] as $boolean) {
+            $boolean == "true" ? $progress+=1 : $progress;
+        }
+        $progress = ($progress)/(count($data['task_progress']))*100;
+        $data['task_percentage']=(int)$progress;
+
         $task->update($data);
+
         return redirect()->route('my-tasks', $tasks)->with('success','Edited successfully');
     }
 }

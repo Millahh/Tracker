@@ -17,6 +17,7 @@ class Employer extends Model
         'task_assignments',
         'file',
         'task_progress',
+        'task_percentage',
     ];
     protected $hidden = [
         'task_name',
@@ -26,6 +27,7 @@ class Employer extends Model
         'task_assignments',
         'file',
         'task_progress',
+        'task_percentage',
     ];
     protected function casts(): array
     {

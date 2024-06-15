@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('task_due');
             $table->json('task_assignments')->nullable();
             $table->text('file')->nullable();
+            $table->integer('task_percentage')->default(0);
             $table->timestamps('created_at');
         });
     }
