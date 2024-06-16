@@ -67,7 +67,7 @@ class EmployeeController extends Controller
         $data['task_percentage']=(int)$progress;
 
         $task->update($data);
-        return redirect()->route('my-tasks', $display_tasks)->with('success','Edited successfully');
+        return redirect()->route('my-tasks', $display_tasks);
    	
     }
 
@@ -92,6 +92,6 @@ class EmployeeController extends Controller
         $data['task_percentage']=(int)$progress;
         $task->update($data);
 
-        return redirect()->route('my-tasks', $tasks)->with('success','Edited successfully');
+        return redirect()->route('my-tasks', $tasks)->with('success', 'Task Updated Successfully');
     }
 }

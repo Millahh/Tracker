@@ -13,7 +13,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js', './node_modules/flowbite/dist/flowbite.min.js'])
     </head>
     <body class="font-sans antialiased bg-custom bg-cover">
         <div class="guest min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
@@ -25,4 +25,7 @@
             </div>
         </div>
     </body>
+    @session('success')
+        <x-alert-success-session/>
+    @endsession
 </html>

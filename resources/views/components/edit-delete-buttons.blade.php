@@ -6,7 +6,7 @@
     <form action="{{ route('employer.destroy', $task) }}" method="POST" class="inline-block mb-0">
         @csrf
         @method('DELETE')
-        <button class="inline-block rounded-2xl bg-[#FFDADA] py-3 px-4 mx-1">
+        <button class="inline-block rounded-2xl bg-[#FFDADA] py-3 px-4 mx-1" onclick="return confirm('Are you sure you want to delete this task?')">
             <i class="fa-solid fa-trash fa-lg" style="color: #F24125;"></i>
         </button>
     </form>

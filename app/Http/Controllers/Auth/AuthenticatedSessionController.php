@@ -43,7 +43,7 @@ class AuthenticatedSessionController extends Controller
         };
         // $request->session()->regenerate();
 
-        return redirect(route('/', absolute: false));
+        return redirect()->route('/');
     
     }
 

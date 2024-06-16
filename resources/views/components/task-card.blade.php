@@ -36,8 +36,10 @@
                 @endforeach
             </div>
             @if (Auth::user()->role === "employee")
-            <button type="submit">save progress</button>
+                <button type="submit">save progress</button>
+            @endif
         </form>
+            @if (Auth::user()->role === "employee")
                 @if (is_null($task->file))
                     <x-submit-button :task=$task/>
                 @else

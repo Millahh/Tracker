@@ -18,6 +18,7 @@
                 @csrf
                 <x-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
+                            confirm('Are you sure you want to Log Out?');
                                     this.closest('form').submit();">
                     {{ __(' Log Out') }}
                 </x-nav-link>
@@ -31,8 +32,9 @@
             </x-nav-link>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <x-nav-link :href="route('logout')"
+                <x-nav-link :href="route('logout')" 
                         onclick="event.preventDefault();
+                            confirm('Are you sure you want to Log Out?');
                                     this.closest('form').submit();">
                     {{ __('Log Out') }}
                 </x-nav-link>
@@ -90,6 +92,7 @@
 
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
+                                confirm('Are you sure you want to Log Out?');
                                         this.closest('form').submit();">
                         {{ __('Log Out') }}
                     </x-responsive-nav-link>

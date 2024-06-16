@@ -13,7 +13,7 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js', './node_modules/flowbite/dist/flowbite.min.js', './node_modules/flowbite/dist/datepicker.js']);
+        @vite(['resources/css/app.css', 'resources/js/app.js', './node_modules/flowbite/dist/flowbite.min.js', './node_modules/flowbite/dist/datepicker.js'])
     </head>
     <body class="antialiased min-h-screen bg-custom bg-cover">
         <div class="">
@@ -21,6 +21,9 @@
             <!-- Page Content -->
             <main class="sm:ml-64">
                 {{ $slot }}
+                @session('success')
+                    <x-alert-success-session/>
+                @endsession
             </main>
         </div>
     </body>

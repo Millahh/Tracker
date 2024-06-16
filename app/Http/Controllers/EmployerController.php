@@ -21,7 +21,6 @@ class EmployerController extends Controller
         foreach($user_employee as $employee){
             array_push($tasks_id,[$employee->id => $employee->first_name.' '.$employee->last_name]);
         }
-        dd($tasks);
         for($loop=0; $loop<count($tasks); $loop++){
             $tasks[$loop]['tasks_id'] = $tasks_id;
         }
@@ -69,16 +68,11 @@ class EmployerController extends Controller
             }
             $employee_loop->update($employee_data);
         }
-        return redirect()->route('tasks', $employer)->with('success','Saved successfully');
-    }
 
-    public function edit(Employer $employer){
-        // dd($employer);
-        // return view('tracker.tracker-employer.tasks', ['task'=> $employer]);
+        return redirect()->route('tasks', $employer)->with('success', 'Task Created Successfully');
     }
 
     public function update(Request $request, Employer $employer){
-        // dd($employer);
         $data = $request->validate([
             'task_name' => ['required'],
             'task_desc' => ['required'],
@@ -98,7 +92,7 @@ class EmployerController extends Controller
             }
             $employee_loop->update($employee_data);
         }
-        return redirect()->route('tasks', $employer)->with('success','Edited successfully');
+        return redirect()->route('tasks', $employer)->with('success', 'Task Edited Successfully');
     }
     public function download(Request $request, $file)
     {
@@ -106,6 +100,6 @@ class EmployerController extends Controller
     }
     public function destroy(Employer $employer){
         $employer->delete();
-        return redirect()->route('tasks', $employer)->with('success','Deleted successfully');
+        return redirect()->route('tasks', $employer)->with('success', 'Task Deleted Successfully');
     }
 }
