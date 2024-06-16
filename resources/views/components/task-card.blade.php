@@ -14,7 +14,7 @@
         <form action="{{ route('update-progress', $task->id) }}" method="POST">
             @csrf
             @method('PUT')
-            <div class="checklists px-4">
+            <div class="checklists pt-1">
                 <?php $count=-1 ?>
                 @foreach ($task->task_checkpoints as $checkpoint)
                     <?php $count+=1 ?>
@@ -36,7 +36,7 @@
                 @endforeach
             </div>
             @if (Auth::user()->role === "employee")
-                <button type="submit">save progress</button>
+                <x-save-progress-button/>
             @endif
         </form>
             @if (Auth::user()->role === "employee")
@@ -48,10 +48,15 @@
             @else
                 @if (is_null($task->file))
                     <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
+                    <div class="text-right">
+                        <x-edit-delete-buttons :task=$task/>
+                    </div>
                 @else
-                    <x-download-button :task=$task/>
+                    <div class="flex justify-between h-fit -mt-5">
+                        <x-download-button :task=$task/>
+                        <x-edit-delete-buttons :task=$task/>
+                    </div>
                 @endif
-                <x-edit-delete-buttons :task=$task/>
             @endif
     </div>
     <div class="text-sm text-right text-[#B5B5B5] mt-1">

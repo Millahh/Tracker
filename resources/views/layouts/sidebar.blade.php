@@ -14,14 +14,14 @@
             <x-nav-link :href="route('completed-tasks')" :active="request()->routeIs('completed-tasks')" class="nav-sidebar">
                 {{ __('Completed')}}
             </x-nav-link>
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('logout') }}" class="px-3 py-3 my-1 text-lg text-white font-bold rounded-md border-transparent hover:text-[#77AFB7] leading-5 hover:shadow-xl hover:bg-[#FDFDFD] cursor-pointer">
                 @csrf
-                <x-nav-link :href="route('logout')"
+                <a :href="route('logout')"
                         onclick="event.preventDefault();
                             confirm('Are you sure you want to Log Out?');
                                     this.closest('form').submit();">
                     {{ __(' Log Out') }}
-                </x-nav-link>
+                </a>
             </form>
         @else
             <x-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')" class="nav-sidebar">
@@ -30,14 +30,14 @@
             <x-nav-link :href="route('finished-tasks')" :active="request()->routeIs('finished-tasks')" class="nav-sidebar">
                 {{ __('Completed') }}
             </x-nav-link>
-            <form method="POST" action="{{ route('logout') }}">
+            <form method="POST" action="{{ route('logout') }}" class="px-3 py-3 my-1 text-lg text-white font-bold rounded-md border-transparent hover:text-[#77AFB7] leading-5 hover:shadow-xl hover:bg-[#FDFDFD] cursor-pointer">
                 @csrf
-                <x-nav-link :href="route('logout')" 
+                <a :href="route('logout')" 
                         onclick="event.preventDefault();
                             confirm('Are you sure you want to Log Out?');
                                     this.closest('form').submit();">
                     {{ __('Log Out') }}
-                </x-nav-link>
+                </a>
             </form>
         @endif
     </div>
@@ -61,11 +61,11 @@
         <div class="pt-2 pb-3 space-y-1">
             @if (Auth::user()->role === "employer")
                 <x-responsive-nav-link :href="route('tasks')" :active="request()->routeIs('tasks')">
-                    {{ __('Dashboard') }}
+                    {{ __('Tasks') }}
                 </x-responsive-nav-link>
             @else
-                <x-responsive-nav-link :href="route('profile.edit')" :active="request()->routeIs('profile.edit')">
-                    {{ __('Tasks') }}
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
                 </x-responsive-nav-link>
             @endif
         </div>
@@ -77,11 +77,11 @@
                     <x-responsive-nav-link :href="route('my-tasks')" :active="request()->routeIs('my-tasks')">
                         {{ __('My Tasks') }}
                     </x-responsive-nav-link>
-                    <x-responsive-nav-link :href="route('profile.edit')">
+                    <x-responsive-nav-link :href="route('completed-tasks')">
                         {{ __('Completed') }}
                     </x-responsive-nav-link>
                 @else
-                    <x-responsive-nav-link :href="route('profile.edit')">
+                    <x-responsive-nav-link :href="route('finished-tasks')">
                         {{ __('Completed') }}
                     </x-responsive-nav-link>
                 @endif
@@ -89,7 +89,6 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                 confirm('Are you sure you want to Log Out?');

@@ -11,9 +11,9 @@ use Illuminate\Http\Request;
 class EmployerController extends Controller
 {
     public function show(){
-        $tasks = Employer::all()
-        ->where('user_id', request()->user()->id)
-        ->sortBy("created_at");
+        $tasks = Employer::where('user_id', request()->user()->id)
+        ->latest()
+        ->get();
 
         $user_employee = User::all()
         ->where('role', 'employee');
@@ -31,7 +31,7 @@ class EmployerController extends Controller
     public function finished_tasks(){
         $tasks = Employer::where('user_id', request()->user()->id)
         ->where('task_percentage', 100)
-        ->orderBy("created_at")
+        ->latest()
         ->get();
 
         $user_employee = User::all()
@@ -44,7 +44,7 @@ class EmployerController extends Controller
             $tasks[$loop]['tasks_id'] = $tasks_id;
         }
 
-        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
+        return view('tracker.tracker-employer.finished',['tasks'=> $tasks]);
     }
 
     public function store(Request $request){

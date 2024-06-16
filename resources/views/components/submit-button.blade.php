@@ -2,9 +2,9 @@
     @csrf
     @method('PUT')
     <input type="file" id="files-{{$task->id}}" name="file" class="hidden cursor-pointer"/>
-    <div class="bg-[#B9D6DA] w-full text-xs py-3 rounded-lg mt-2 hover:bg-[#8fd2db] active:bg-[#8fd2db] focus:bg-[#8fd2db] cursor-pointer" title="PDF/IMAGE ONLY">
+    <div class="bg-[#B9D6DA] w-full text-sm py-3 rounded-lg mt-4 hover:bg-[#8fd2db] active:bg-[#8fd2db] focus:bg-[#8fd2db] cursor-pointer text-center" title="PDF/IMAGE ONLY">
         <i class="fa-regular fa-file" title="PDF/IMAGE ONLY"></i>
-        <label for="files-{{$task->id}}" class="cursor-pointer" title="PDF/IMAGE ONLY">Resources and/or Attatchment</label>
+        <label for="files-{{$task->id}}" class="cursor-pointer" title="PDF/IMAGE ONLY">Resources or Attatchment</label>
     </div>
 </form>
 

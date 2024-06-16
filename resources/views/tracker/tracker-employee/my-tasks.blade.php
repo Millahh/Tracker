@@ -1,6 +1,7 @@
 <x-app-layout>
-    <div class="p-5 min-h-screen">
-        <div class="tasks flex min-w-screen pb-5">
+    <div class="px-5 pb-2 pt-4 min-h-screen">
+        <x-page-title>My Tasks</x-page-title>
+        <div class="tasks flex min-w-screen pb-4">
             @forelse ($tasks as $task)
                 <x-task-card :task=$task/>
             @empty

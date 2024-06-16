@@ -16,7 +16,7 @@ class EmployeeController extends Controller
 
         ($tasks_id = ((array_values(array_values((array)$employee)[0]))[0])->tasks_id);
 
-        $display_tasks = Employer::whereIn('id', $tasks_id)->get();
+        $display_tasks = Employer::whereIn('id', $tasks_id)->latest("created_at")->first()->get();
 
         return view('tracker.tracker-employee.dashboard', ['tasks'=> $display_tasks]);
     }
@@ -29,7 +29,7 @@ class EmployeeController extends Controller
             $employee = $temp;
         }
 
-        $display_tasks = Employer::whereIn('id', $employee->tasks_id)->get();
+        $display_tasks = Employer::whereIn('id', $employee->tasks_id)->latest()->get();
         
         return view('tracker.tracker-employee.my-tasks', ['tasks'=> $display_tasks, 'employee'=> $employee]);
     }
@@ -41,7 +41,7 @@ class EmployeeController extends Controller
             $employee = $temp;
         }
 
-        $display_tasks = Employer::whereIn('id', $employee->tasks_id)->where('task_percentage', 100)->get();
+        $display_tasks = Employer::whereIn('id', $employee->tasks_id)->where('task_percentage', 100)->latest()->get();
         
         return view('tracker.tracker-employee.completed-tasks', ['tasks'=> $display_tasks, 'employee'=> $employee]);
     }
