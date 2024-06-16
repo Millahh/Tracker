@@ -34,16 +34,13 @@ class AuthenticatedSessionController extends Controller
             $url = "";
             if($request->user()->role === "employer"){
                 $url = "tasks";
-            }elseif($request->user()->role === "employee"){
-                $url = "dashboard";
             }else{
-                $url = "/";  
+                $url = "dashboard";
             }
             return redirect()->intended($url);
         };
-        // $request->session()->regenerate();
 
-        return redirect()->route('/');
+        return redirect()->route('/')->with('error', 'NIP or Password is incorrect');  
     
     }
 
