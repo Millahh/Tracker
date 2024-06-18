@@ -22,7 +22,7 @@ class EmployeeController extends Controller
 
         ($tasks_id = ((array_values(array_values((array)$employee)[0]))[0])->tasks_id);
 
-        $display_tasks = Employer::whereIn('id', $tasks_id)->latest("task_due")->first()->get();
+        $display_tasks = Employer::whereIn('id', $tasks_id)->latest("task_due")->latest()->get();
 
         //dd($display_tasks);
 

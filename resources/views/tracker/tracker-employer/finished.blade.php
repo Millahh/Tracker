@@ -8,7 +8,7 @@
             @forelse ($tasks as $task)
                 <x-task-card :task=$task/>
             @empty
-                <p class="text-2xl font-sans font-medium m-auto">No task has been completed yet.</p>
+                <p class="text-2xl font-sans font-medium m-auto text-[#3E5457]">No task has been completed yet.</p>
             @endforelse
         </div>
     </div>

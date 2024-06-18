@@ -18,16 +18,16 @@
                 @foreach ($task->task_checkpoints as $checkpoint)
                     <?php $count+=1 ?>
                     <div class="flex mb-2 text-sm">
-                        @if (is_null($task->task_progress))
+                        @if (empty($task->task_progress))
                             <input checked id="default-checkbox" type="checkbox" value="false" name="task_progress[{{$count}}]" class="hidden">
                             <input id="default-checkbox" type="checkbox" value="true" name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer checked:bg-[#77AFB7] checked:hover:bg-[#77AFB7]" @disabled(Auth::user()->role === "employer")>
                         @else
-                            @if ($task->task_progress[$count]=="true")
-                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden"/>
-                                <input checked id="checked-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer checked:bg-[#77AFB7] checked:hover:bg-[#77AFB7]" @disabled(Auth::user()->role === "employer")/>
-                            @else
+                            @if (empty($task->task_progress[$count]) || $task->task_progress[$count]=="false")
                                 <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden"/>
                                 <input id="default-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer checked:bg-[#77AFB7] checked:hover:bg-[#77AFB7]" @disabled(Auth::user()->role === "employer")/>
+                            @else
+                                <input checked id="checked-checkbox" type="checkbox" value=false name="task_progress[{{$count}}]" class="hidden"/>
+                                <input checked id="checked-checkbox" type="checkbox" value=true name="task_progress[{{$count}}]" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded cursor-pointer checked:bg-[#77AFB7] checked:hover:bg-[#77AFB7]" @disabled(Auth::user()->role === "employer")/>
                             @endif
                         @endif
                         <p class="px-2">{{$checkpoint}}</p>

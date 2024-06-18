@@ -34,25 +34,30 @@
                                     <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
                                     </svg>
                                 </div>
-                                <input datepicker datepicker-autohide type="text" id="task_due" name="task_due" class="block min-w-full ps-10 p-2.5 bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm focus:ring-transparent" placeholder="Due date">
+                                <input datepicker  datepicker-format="dd/mm/yyyy" datepicker-autohide type="text" id="task_due" name="task_due" class="block min-w-full ps-10 p-2.5 bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm focus:ring-transparent" placeholder="Due date">
                             </div>
                         </div>
                     </div>
                     <!-- Task Description -->
                     <label for="task_desc" class="pt-2 block text-md text-[#3E5457] font-bold">Description</label>
-                    <textarea rows="" id="task_desc" name="task_desc" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Description goes here.." required ></textarea>
+                    <textarea rows="" id="task_desc" name="task_desc" maxlength="450" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Description goes here.." required ></textarea>
                     
                     <div class="grid grid-rows-1 grid-flow-col gap-10">
                         <!-- Task Checkpoints -->
                         <div class="col space-y-2">
-                            <div class="flex pt-2">
-                                <label for="task_desc" class="block text-md text-[#3E5457] font-bold mr-2">Task Breakdown</label>
-                                <button id="btn1" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
+                            <div class="checkpoints-title">
+                                <div class="flex pt-2">
+                                    <label for="task_desc" class="block text-md text-[#3E5457] font-bold mr-2">Task Breakdown</label>
+                                    <button id="btn1" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
+                                </div>
+                                <p class="text-xs text-neutral-400 pt-0">*Maximum up to 6</p>
                             </div>
-                            <div id="checkpoints">
-                                <div class="flex mb-2">
-                                    <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                                    <input type="text" name="task_checkpoints[0]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                            <div class="overflow-y-auto h-3/6 w-4/5">
+                                <div id="checkpoints">
+                                    <div class="flex mb-2">
+                                        <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
+                                        <input type="text" name="task_checkpoints[0]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -63,7 +68,7 @@
                             </div>
                             <div class="overflow-auto h-3/6 w-4/5">
                                 <?php $assignment_loop=-1 ?>
-                                @foreach ($task[0]->tasks_id as $task)
+                                @foreach ($tasks_id as $task)
                                     <?php $assignment_loop+=1 ?>
                                     <div class="flex mb-2 text-sm">
                                         <input checked id="default-checkbox" type="checkbox" value={{(array_keys($task)[0])}}|false name="task_assignments[{{$assignment_loop}}]" class="hidden">
@@ -90,11 +95,15 @@
     $(document).ready(function(){
     $("#btn1").click(function(){
         ++i;
-        $("#checkpoints").append(
-            `<div class="flex mb-2">
-                <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                <input type="text" name="task_checkpoints[`+i+`]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
-            </div>`);
+        if(i<7){
+            $("#checkpoints").append(
+                `<div class="flex mb-2">
+                    <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
+                    <input type="text" name="task_checkpoints[`+i+`]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                </div>`);
+        }else{
+            alert("you cant add more!");
+        }
     });
     });
 </script>

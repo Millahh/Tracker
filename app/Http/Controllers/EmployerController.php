@@ -25,7 +25,7 @@ class EmployerController extends Controller
             $tasks[$loop]['tasks_id'] = $tasks_id;
         }
 
-        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks]);
+        return view('tracker.tracker-employer.tasks',['tasks'=> $tasks, 'tasks_id'=>$tasks_id]);
     }
 
     public function finished_tasks(){
@@ -44,7 +44,7 @@ class EmployerController extends Controller
             $tasks[$loop]['tasks_id'] = $tasks_id;
         }
 
-        return view('tracker.tracker-employer.finished',['tasks'=> $tasks]);
+        return view('tracker.tracker-employer.finished',['tasks'=> $tasks, 'tasks_id'=>$tasks_id]);
     }
 
     public function store(Request $request){
@@ -80,6 +80,11 @@ class EmployerController extends Controller
             'task_due' => ['required'],
             'task_assignments' => ['required'],
         ]);
+        $data2['task_checkpoints']=[];
+        foreach($data['task_checkpoints'] as $checkpoint){
+            if (!is_null($checkpoint)) array_push($data2['task_checkpoints'],$checkpoint);
+        }
+        $data['task_checkpoints']=$data2['task_checkpoints'];
         $employer->update($data);
 
         foreach ($employee_loop = Employee::all() as $employee_loop) {

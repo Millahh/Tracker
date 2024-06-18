@@ -1,6 +1,6 @@
 <x-app-layout class="">
-    <div class="dashboard grid-rows-3 grid-flow-col gap-4 min-h-fit max-h-screen py-5 px-10">
-        <div class="part-1 bg-card bg-cover rounded-xl px-7 py-6">
+    <div class="dashboard grid-rows-3 grid-cols-2 grid-flow-col gap-4 min-h-fit max-h-screen py-5 px-10">
+        <div class="part-1  bg-card bg-cover rounded-xl px-7 py-6">
             <p class="text-[#496569] text-xl font-bold"> 👋 Hi, {{$name}} </p>
             <hr class="my-1">
             <p class="italic text-white text-base font-light"> {{$random_quote}} </p>
@@ -24,7 +24,7 @@
                 </div>
             </div>
         </div>
-        <div class="part-3 row-span-3 border-2 rounded-xl p-5">
+        <div class="part-3 row-span-3 border-2 rounded-xl px-5 py-5 box-border overflow-y-auto">
             <p class="text-[#3E5457] text-xl font-bold pb-1">📌 My Tasks</p>
             @forelse ($tasks->take(2) as $task)
                 <hr class="my-4">

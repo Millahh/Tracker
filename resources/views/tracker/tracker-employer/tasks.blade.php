@@ -9,7 +9,7 @@
             @forelse ($tasks as $task)
                 <x-task-card :task=$task/>
             @empty
-                <p class="text-2xl font-sans font-medium m-auto">You haven't created a task yet.</p>
+                <p class="text-2xl font-sans font-medium m-auto text-[#3E5457]">You haven't created a task yet.</p>
             @endforelse
         </div>
     </div>

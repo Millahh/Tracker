@@ -62,9 +62,15 @@ button:disabled, input[type=checkbox]:disabled, button:disabled:hover, input[typ
     border-color: rgb(163, 171, 181);
     color:rgb(163, 171, 181) ;
 }
-input[type=checkbox]:disabled:checked{
+input[type=checkbox]:disabled:checked, input[type=checkbox]:checked, input[type=checkbox]:checked:focus, input[type=checkbox]:checked:hover{
     background-color: #77AFB7;
     border-color: #77AFB7;
+}
+input[type=checkbox]:focus{
+    outline-color: #77AFB7;
+}
+[type='text']:focus{
+    box-shadow: none;
 }
 
 /* CALENDAR */
@@ -138,4 +144,3 @@ textarea:focus, #static-modal input:focus, .date-picker datepicker:focus{
         font-size: 14px;
     }
 }
-
