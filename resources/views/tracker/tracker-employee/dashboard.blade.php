@@ -1,5 +1,5 @@
 <x-app-layout class="">
-    <div class="dashboard grid-rows-3 grid-flow-col gap-4 min-h-screen py-5 px-10">
+    <div class="dashboard grid-rows-3 grid-flow-col gap-4 min-h-fit max-h-screen py-5 px-10">
         <div class="part-1 bg-card bg-cover rounded-xl px-7 py-6">
             <p class="text-[#496569] text-xl font-bold"> 👋 Hi, {{$name}} </p>
             <hr class="my-1">
@@ -25,10 +25,13 @@
             </div>
         </div>
         <div class="part-3 row-span-3 border-2 rounded-xl p-5">
-            <p class="text-[#3E5457] text-xl font-bold pb-3">📌 My Tasks</p>
-            <x-task-preview :task=$tasks[0]/>
-            <hr class="my-4">
-            <x-task-preview :task=$tasks[1]/>
+            <p class="text-[#3E5457] text-xl font-bold pb-1">📌 My Tasks</p>
+            @forelse ($tasks->take(2) as $task)
+                <hr class="my-4">
+                <x-task-preview :task=$task/>
+            @empty
+                <p>You haven't been assigned a task yet.</p>
+            @endforelse
             <a class="underline block text-right pt-2 hover:cursor-pointer hover:text-sky-600" href="{{ route('my-tasks') }}"> see more...</a>
         </div>
     </div>

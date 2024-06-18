@@ -1,4 +1,3 @@
-
 <div class="card p-5 mx-5 border rounded-lg shadow-md">
     <p class="font-semibold text-xs text-gray-700 text-center">{{$task->task_percentage}}%</p>
     <div class="progress-bar w-full bg-gray-200 rounded-full h-4 mb-4 dark:bg-gray-300">
@@ -49,6 +48,23 @@
                 @if (is_null($task->file))
                     <p class="mt-2 text-xs bg-slate-300 text-center"> <i class="fa-regular fa-file"></i> Attachment hasn't uploaded yet</p>
                     <div class="text-right">
+                        <x-edit-delete-buttons :task=$task/>
+                    </div>
+                @elseif ($task->task_percentage == 100)
+                    <?php $names="" ?>
+                    <div class="bg-slate-300 px-1">
+                        <p class="mt-2 text-xs text-center inline">Completed by:</p>
+                        @foreach ($task->task_assignments as $task_assignments)
+                            @foreach ($task->tasks_id as $tasks_id)
+                                @if (substr($task_assignments, 2)=="true" && array_keys($tasks_id)[0] == (int)$task_assignments[0])
+                                    <p class="hidden">{{$names .=" ".array_values($tasks_id)[0] . ","}}</p>
+                                @endif
+                            @endforeach
+                        @endforeach
+                        <p class="text-xs text-center inline">{{substr($names, 0, -1)}}.</p>
+                    </div>
+                    <div class="flex justify-between h-fit">
+                        <x-download-button :task=$task/>
                         <x-edit-delete-buttons :task=$task/>
                     </div>
                 @else

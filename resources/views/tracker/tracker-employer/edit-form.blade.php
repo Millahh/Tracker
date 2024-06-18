@@ -19,7 +19,7 @@
                 @csrf
                 @method('PUT')
                 <!-- Modal body -->
-                <div class="p-4 md:p-5 space-y-2">
+                <div class="p-4 md:p-5 space-y-2 text-left">
                     <div class="grid grid-rows-1 grid-flow-col gap-10">
                         <!-- Task Title -->
                         <div class="col space-y-2">

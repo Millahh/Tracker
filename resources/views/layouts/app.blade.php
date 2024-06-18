@@ -15,11 +15,11 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js', './node_modules/flowbite/dist/flowbite.min.js', './node_modules/flowbite/dist/datepicker.js'])
     </head>
-    <body class="antialiased min-h-screen bg-custom bg-cover">
-        <div class="">
+    <body class="antialiased min-h-screen bg-custom bg-cover box-border">
+        <div class="box-border">
             @include('layouts.sidebar')
             <!-- Page Content -->
-            <main class="sm:ml-64">
+            <main class="sm:ml-64 box-border">
                 {{ $slot }}
                 @session('success')
                     <x-alert-success-session/>
