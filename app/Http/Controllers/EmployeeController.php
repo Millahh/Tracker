@@ -7,10 +7,16 @@ use App\Models\Employee;
 use App\Models\Employer;
 use App\Models\User;
 use App\Http\Controllers\File;
+use Illuminate\Support\Facades\DB;
 
 class EmployeeController extends Controller
 {
     public function dashboard(){
+        $random_quote = ((DB::select('select * from quotes')));
+        $random_quote = $random_quote[array_rand($random_quote)]->quote;
+
+        $name = request()->user()->first_name . " " . request()->user()->last_name;
+
         $employee = Employee::all()
         ->where('user_id', request()->user()->id);
 
@@ -18,7 +24,7 @@ class EmployeeController extends Controller
 
         $display_tasks = Employer::whereIn('id', $tasks_id)->latest("created_at")->first()->get();
 
-        return view('tracker.tracker-employee.dashboard', ['tasks'=> $display_tasks]);
+        return view('tracker.tracker-employee.dashboard', ['tasks'=> $display_tasks, 'random_quote' => $random_quote, 'name'=> $name]);
     }
 
     public function my_tasks(){
