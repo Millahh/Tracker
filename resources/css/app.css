@@ -58,9 +58,9 @@ div::-webkit-scrollbar-thumb {
 button:disabled, input[type=checkbox]:disabled, button:disabled:hover, input[type=checkbox]:disabled:hover, button:disabled .fa-pen-to-square{
     cursor: not-allowed;
     pointer-events: all !important;
-    background-color: #cccccce1;
-    border-color: #8f8f8f92;
-    color:#8f8f8f92 ;
+    background-color: rgb(203 213 225);
+    border-color: rgb(163, 171, 181);
+    color:rgb(163, 171, 181) ;
 }
 input[type=checkbox]:disabled:checked{
     background-color: #77AFB7;

@@ -51,7 +51,7 @@
                                 <button id="{{$task->id}}" class="text-xs underline text-blue-500 self-center" type="button"> + Add Here</button>
                             </div>
                             @foreach ($task->task_checkpoints as $checkpoint)
-                                <div id="checkpoints">
+                                <div id="checkpoints-{{$ID}}">
                                     <div class="flex mb-2">
                                         <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
                                         <input type="text" id={{$task->id}} name="task_checkpoints[]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." value="{{$checkpoint}}"  />
@@ -96,10 +96,10 @@
   <script>
       $(document).ready(function(){
           $("#{{$ID}}").click(function(){
-              $("#checkpoints").append(
+              $("#checkpoints-{{$ID}}").append(
                 `<div class="flex mb-2">
                     <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                    <input type="text" name="task_checkpoints['j']" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.. />
+                    <input type="text" name="task_checkpoints['j']" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." />
                 </div>`
                 );
             });
