@@ -1,7 +1,7 @@
 @include('tracker.tracker-employer.edit-form', ['ID'=>$task->id, 'task_assignments'=>$task->task_assignments])
 <div class="mt-4">
-    <button data-modal-target="modal-edit-{{$task->id}}" data-modal-toggle="modal-edit-{{$task->id}}" class="inline-block rounded-lg bg-[#BBEFF6] hover:bg-[#78d4e0] py-5 px-4">
-        <a  class="fa-solid fa-pen-to-square fa-lg" style="color: #00A5CB;"></a>
+    <button data-modal-target="modal-edit-{{$task->id}}" data-modal-toggle="modal-edit-{{$task->id}}" class="inline-block rounded-lg bg-[#BBEFF6] hover:bg-[#78d4e0] py-5 px-4" @disabled($task->task_percentage == 100)>
+        <a  class="fa-solid fa-pen-to-square fa-lg"></a>
     </button>
     <form action="{{ route('employer.destroy', $task) }}" method="POST" class="inline-block mb-0">
         @csrf

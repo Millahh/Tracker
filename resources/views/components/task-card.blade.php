@@ -52,7 +52,7 @@
                     </div>
                 @elseif ($task->task_percentage == 100)
                     <?php $names="" ?>
-                    <div class="bg-slate-300 px-1">
+                    <div class="bg-[#A3FF94] px-1">
                         <p class="mt-2 text-xs text-center inline">Completed by:</p>
                         @foreach ($task->task_assignments as $task_assignments)
                             @foreach ($task->tasks_id as $tasks_id)
