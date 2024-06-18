@@ -22,7 +22,9 @@ class EmployeeController extends Controller
 
         ($tasks_id = ((array_values(array_values((array)$employee)[0]))[0])->tasks_id);
 
-        $display_tasks = Employer::whereIn('id', $tasks_id)->latest("created_at")->first()->get();
+        $display_tasks = Employer::whereIn('id', $tasks_id)->latest("task_due")->first()->get();
+
+        //dd($display_tasks);
 
         return view('tracker.tracker-employee.dashboard', ['tasks'=> $display_tasks, 'random_quote' => $random_quote, 'name'=> $name]);
     }
