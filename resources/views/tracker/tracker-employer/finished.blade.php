@@ -8,7 +8,10 @@
             @forelse ($tasks as $task)
                 <x-task-card :task=$task/>
             @empty
-                <p class="text-2xl font-sans font-medium m-auto text-[#3E5457]">No task has been completed yet.</p>
+                <div class="text-center self-center">
+                    <img src="{{url('/no-task.png')}}" alt="Image" class=" w-1/3 m-auto"/>
+                    <p class="text-xl text-[#3E5457]">No task has been completed yet.</p>
+                </div>
             @endforelse
         </div>
     </div>

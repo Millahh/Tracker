@@ -11,7 +11,7 @@
         </div>
         <div class="part-2 row-span-2 rounded-xl border bg-[#F4F9FA] p-7">
             <p class="text-[#3E5457] text-xl font-bold pb-3"> 🕐 Upcoming Tasks</p>
-            @if (empty($tasks[0]))
+            @if (empty($tasks[0])||$tasks[0]->task_percentage == 100)
                 <div class="text-center overflow-y-hidden">
                     <img src="{{url('/no-upcoming-task.png')}}" alt="Image" class=" w-3/6 m-auto"/>
                     <p class="text-[#3E5457]">Yeay, you don't have any upcoming tasks!</p>
