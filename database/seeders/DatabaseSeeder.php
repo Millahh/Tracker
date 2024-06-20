@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
     ],
     [
         'user_id' => 2,
-        'tasks_id' => json_encode([1]),
+        'tasks_id' => json_encode([]),
     ],
     [
         'user_id' => 3,
@@ -65,7 +65,7 @@ class DatabaseSeeder extends Seeder
         'user_id' => 4,
         'task_name' => 'Frontend Web',
         'task_desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.',
-        'task_checkpoints' => json_encode(['Task division', 'Check progress']),
+        'task_checkpoints' => json_encode(['Task division', 'Check progress', 'Client Meeting', 'Task division', 'Check progress', 'Client Meeting']),
         'task_due' => (Carbon::parse('2024-07-01'))->format('d/m/Y'),
         'task_assignments' => json_encode(["1|true", "2|false", "3|true"]),
     ],
