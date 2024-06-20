@@ -6,6 +6,13 @@
         <i class="fa-regular fa-file cursor-pointer"></i>
         <label for="files" class="cursor-pointer reupload" title={{$task->file}}>Click here to reupload</label>
     </div>
+    @if ($errors->any())
+        <div class="alert alert-danger text-xs text-red-600 space-y-1 flex items-center px-2 pt-1">
+            @foreach ($errors->all() as $error)
+                <ul class="text-center">{{ $error }}</ul>
+            @endforeach
+        </div>
+    @endif
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

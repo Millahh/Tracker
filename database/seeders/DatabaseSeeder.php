@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
             'role' => 'employee',
         ],
         [
-            'first_name' => 'Muhammad',
-            'last_name' => 'Daud',
+            'first_name' => 'Anissa',
+            'last_name' => 'Putri',
             'NIP' => '123456780',
             'password' => Hash::make('12345678'),
             'role' => 'employee',

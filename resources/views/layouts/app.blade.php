@@ -24,6 +24,9 @@
                 @session('success')
                     <x-alert-success-session/>
                 @endsession
+                @session('error')
+                <x-alert-error-session/>
+            @endsession
             </main>
         </div>
     </body>

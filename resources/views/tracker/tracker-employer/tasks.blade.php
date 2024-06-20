@@ -12,5 +12,8 @@
                 <p class="text-2xl font-sans font-medium m-auto text-[#3E5457]">You haven't created a task yet.</p>
             @endforelse
         </div>
+        @session('error')
+            <x-alert-error-session/>
+        @endsession
     </div>
 </x-app-layout>

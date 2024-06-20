@@ -24,6 +24,7 @@
                         <div class="col space-y-2">
                             <label for="task_name" class="block text-md text-[#3E5457] font-bold">Title</label>
                             <input type="text" id="task_name" name="task_name" maxlength="35" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Title goes here.." required />
+                            <x-input-error :messages="$errors->get('task_name')" class="mt-2" />
                         </div>
                         <!-- Task Due -->
                         <div class="col space-y-2 min-w-full">
@@ -35,12 +36,14 @@
                                     </svg>
                                 </div>
                                 <input datepicker  datepicker-format="dd/mm/yyyy" datepicker-autohide type="text" id="task_due" name="task_due" class="block min-w-full ps-10 p-2.5 bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm focus:ring-transparent" placeholder="Due date">
+                                <x-input-error :messages="$errors->get('task_due')" class="mt-2" />
                             </div>
                         </div>
                     </div>
                     <!-- Task Description -->
                     <label for="task_desc" class="pt-2 block text-md text-[#3E5457] font-bold">Description</label>
                     <textarea rows="" id="task_desc" name="task_desc" maxlength="450" class="bg-gray-50 border-2 border-[#77AFB7] focus:border-[#77AFB7] text-gray-900 text-sm rounded-sm w-full p-2.5" placeholder="Description goes here.." required ></textarea>
+                    <x-input-error :messages="$errors->get('task_desc')" class="mt-2" />
                     
                     <div class="grid grid-rows-1 grid-flow-col gap-10">
                         <!-- Task Checkpoints -->
@@ -57,6 +60,7 @@
                                     <div class="flex mb-2">
                                         <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
                                         <input type="text" name="task_checkpoints[0]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                                        <x-input-error :messages="$errors->get('task_checkpoints[0]')" class="mt-2" />
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +86,7 @@
                 </div>
                 <!-- Modal footer -->
                 <div class="absolute bottom-0 right-0 p-4">
-                    <button data-modal-hide="static-modal" type="submit" class="py-2 px-5 text-md font-medium text-white focus:outline-none bg-[#77AFB7] rounded-lg focus:z-10 focus:bg-[#517176] hover:bg-[#517176]">Save</button>
+                    <button type="submit" class="py-2 px-5 text-md font-medium text-white focus:outline-none bg-[#77AFB7] rounded-lg focus:z-10 focus:bg-[#517176] hover:bg-[#517176]">Save</button>
                 </div>
               </form>
           </div>
@@ -99,7 +103,7 @@
             $("#checkpoints").append(
                 `<div class="flex mb-2">
                     <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
-                    <input type="text" name="task_checkpoints[`+i+`]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." required />
+                    <input type="text" name="task_checkpoints[`+i+`]" maxlength="35" class="px-2 py-0 border-transparent outline-none focus:border-transparent text-gray-900 text-sm" placeholder="Write here.." />
                 </div>`);
         }else{
             alert("you cant add more!");

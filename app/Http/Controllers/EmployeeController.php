@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Employee;
 use App\Models\Employer;
 use App\Models\User;
@@ -53,10 +54,13 @@ class EmployeeController extends Controller
         
         return view('tracker.tracker-employee.completed-tasks', ['tasks'=> $display_tasks, 'employee'=> $employee]);
     }
-    public function update_attachment(Request $request, $display_tasks){
+    public function update_attachment(Request $request, $display_tasks): RedirectResponse{
         $task = Employer::findOrFail($display_tasks);
         $data = $request->validate([
-            'file' => 'required|mimes:pdf,jpg,png,jpeg|max:2048',
+            'file' => 'required|mimes:pdf,jpg,png,jpeg',
+        ],
+        [
+            'file.mimes' => 'Upload files with pdf/jpg/png/jpeg extensions only!',
         ]);
         $file = $request->file('file');
         $fileName = $file->getClientOriginalName();
