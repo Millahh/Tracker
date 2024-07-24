@@ -56,7 +56,7 @@
                                 </div>
                                 <p class="text-xs text-neutral-400 pt-0">*Maximum up to 6</p>
                             </div>
-                            <div class="overflow-y-auto h-3/6 w-full">
+                            <div class="overflow-y-auto h-full w-full">
                                 <?php $index = count($task->task_checkpoints)?>
                                 @foreach ($task->task_checkpoints as $checkpoint)
                                     <div id="checkpoints">
@@ -77,7 +77,7 @@
                                 <label for="task_assignments" class="pt-2 block text-md text-[#3E5457] font-bold mr-2">Task Assignment</label>
                                 <p class="text-xs text-neutral-400">*Fill the checkbox to assign task</p>
                             </div>
-                            <div class="overflow-auto h-3/6 w-4/5">
+                            <div class="overflow-auto h-full w-4/5">
                                 <?php $assignment_loop=-1  ?>
                                 @foreach ($task->tasks_id as $task)
                                 <?php $assignment_loop+=1 ?>

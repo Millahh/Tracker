@@ -55,7 +55,7 @@
                                 </div>
                                 <p class="text-xs text-neutral-400 pt-0">*Maximum up to 6</p>
                             </div>
-                            <div class="overflow-y-auto h-3/6 w-4/5">
+                            <div class="overflow-y-auto h-full w-4/5">
                                 <div id="checkpoints">
                                     <div class="flex mb-2">
                                         <input disabled id="disabled-checkbox" type="checkbox" value="" class="w-5 h-5 bg-gray-100 border-[#77AFB7] border-2 rounded">
@@ -70,7 +70,7 @@
                                 <label for="task_assignments" class="pt-2 block text-md text-[#3E5457] font-bold mr-2">Task Assignment</label>
                                 <p class="text-xs text-neutral-400">*Fill the checkbox to assign task</p>
                             </div>
-                            <div class="overflow-auto h-3/6 w-4/5">
+                            <div class="overflow-auto h-full w-4/5">
                                 <?php $assignment_loop=-1 ?>
                                 @foreach ($tasks_id as $task)
                                     <?php $assignment_loop+=1 ?>
